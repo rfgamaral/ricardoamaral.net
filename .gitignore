@@ -1,0 +1,5 @@
+# Build: Dependencies and output files
+node_modules/
+
+# Other: Miscellaneous files
+*.log
