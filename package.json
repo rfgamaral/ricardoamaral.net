@@ -14,14 +14,16 @@
     "clean:dist": "rimraf dist/",
     "deploy": "npm-run-all clean build gh-pages",
     "gh-pages": "gh-pages --dist dist/ --message \"MY MESSAGE HERE\"",
-    "gulp:development": "gulp development",
-    "gulp:production": "gulp production",
+    "gulp:development": "cross-env NODE_ENV=development gulp development",
+    "gulp:production": "cross-env NODE_ENV=production gulp production",
     "serve": "npm-run-all clean gulp:development"
   },
   "devDependencies": {
     "babel-preset-es2015": "6.24.1",
     "babel-register": "6.26.0",
     "browser-sync": "2.18.13",
+    "cross-env": "5.1.0",
+    "envalid": "4.1.1",
     "gh-pages": "1.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-cli": "1.4.0",

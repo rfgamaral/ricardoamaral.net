@@ -1,11 +1,13 @@
 import { dest, parallel, series, src } from 'gulp';
 
 import browserSync from 'browser-sync';
+import envalid from 'envalid';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
 import util from 'gulp-util';
 import watch from 'gulp-watch';
 
+const environment = envalid.cleanEnv(process.env);
 const browserSyncInstance = browserSync.create();
 
 /**
