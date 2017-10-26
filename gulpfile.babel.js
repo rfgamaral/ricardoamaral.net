@@ -39,7 +39,7 @@ function initializeBrowserSync() {
 }
 
 /**
- * Compile development source Sass files when changes are detected and copies them to the build
+ * Compile development source Sass files when changes are detected and pipes them into the build
  * destination folder only for changed files.
  */
 function watchStylesTask() {
@@ -52,7 +52,7 @@ function watchStylesTask() {
 }
 
 /**
- * Compile development source Sass files and copies them to the build destination folder.
+ * Compile development source Sass files and pipes them into the build destination folder.
  */
 function buildStylesTask() {
     return src('./src/assets/sass/**/*.scss')
@@ -64,7 +64,7 @@ function buildStylesTask() {
 }
 
 /**
- * Beautify (development) or uglify (production) JS files and copies them to the build destination
+ * Beautify (development) or uglify (production) JS files and pipes them into the build destination
  * folder. Any scripts already minified will be copied as-is.
  */
 function buildScriptsTask() {
@@ -76,8 +76,8 @@ function buildScriptsTask() {
 }
 
 /**
- * Minify the main HTML template and copy it to the build destination folder along with all related
- * files not previously processed by other tasks.
+ * Minify the main HTML template and pipes it into the build destination folder along with all
+ * related files not previously processed by other tasks.
  */
 function buildTemplateTask() {
     return merge2(
