@@ -9,6 +9,7 @@ import htmlmin from 'gulp-htmlmin';
 import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
+import ssi from 'gulp-ssi';
 import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 import watch from 'gulp-watch';
@@ -82,6 +83,7 @@ function buildScriptsTask() {
 function buildTemplateTask() {
     return merge2(
         src('./src/index.html')
+            .pipe(gulpif(environment.isProduction, ssi({ root: './' })))
             .pipe(gulpif(environment.isProduction, htmlmin({
                 collapseBooleanAttributes: true,
                 collapseWhitespace: true,
