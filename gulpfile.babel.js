@@ -54,8 +54,8 @@ function buildSassTask() {
     return src('./src/assets/sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass().on('error', logPluginError))
-        .pipe(gulpif(environment.isProduction, cssnano()))
         .pipe(plumber.stop())
+        .pipe(gulpif(environment.isProduction, cssnano()))
         .pipe(dest('./dist/assets/css'));
 }
 
