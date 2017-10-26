@@ -5,6 +5,7 @@ import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
 import envalid from 'envalid';
 import gulpif from 'gulp-if';
+import htmlmin from 'gulp-htmlmin';
 import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
@@ -75,12 +76,24 @@ function buildScriptsTask() {
 }
 
 /**
- * Copy all sources - excluding Sass files - from the development source folder to the build
- * destination folder.
+ * Minify the main HTML template and copy it to the build destination folder along with all related
+ * files not previously processed by other tasks.
  */
-function buildSourceTask() {
-    return src('./src/**/!(*.scss)', { nodir: true })
-        .pipe(dest('./dist'));
+function buildTemplateTask() {
+    return merge2(
+        src('./src/index.html')
+            .pipe(gulpif(environment.isProduction, htmlmin({
+                collapseBooleanAttributes: true,
+                collapseWhitespace: true,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: true,
+                removeEmptyAttributes: true,
+                removeOptionalTags: true,
+                removeRedundantAttributes: true
+            }))),
+        src('./src/**/!(*.html|*.js|*.scss)', { nodir: true })
+    ).pipe(dest('./dist'));
 }
 
 /**
@@ -90,7 +103,7 @@ function buildSourceTask() {
  * @export `development` task.
  */
 export const development = series(
-    parallel(buildSourceTask, buildStylesTask, buildScriptsTask),
+    parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
     parallel(watchStylesTask, initializeBrowserSync)
 );
 
@@ -99,4 +112,4 @@ export const development = series(
  *
  * @export `production` task.
  */
-export const production = parallel(buildSourceTask, buildStylesTask, buildScriptsTask);
+export const production = parallel(buildStylesTask, buildScriptsTask, buildTemplateTask);
