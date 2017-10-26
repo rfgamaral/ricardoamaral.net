@@ -38,7 +38,7 @@ function initializeBrowserSync() {
  * Compile development source Sass files if changes are detected and copies them to the build
  * destination folder only for changed files.
  */
-function watchSassTask() {
+function watchStylesTask() {
     return watch('./src/assets/sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass().on('error', logPluginError))
@@ -50,7 +50,7 @@ function watchSassTask() {
 /**
  * Compile development source Sass files and copies them to the build destination folder.
  */
-function buildSassTask() {
+function buildStylesTask() {
     return src('./src/assets/sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass().on('error', logPluginError))
@@ -75,8 +75,8 @@ function buildSourceTask() {
  * @export `development` task.
  */
 export const development = series(
-    parallel(buildSourceTask, buildSassTask),
-    parallel(watchSassTask, initializeBrowserSync)
+    parallel(buildSourceTask, buildStylesTask),
+    parallel(watchStylesTask, initializeBrowserSync)
 );
 
 /**
@@ -84,4 +84,4 @@ export const development = series(
  *
  * @export `production` task.
  */
-export const production = parallel(buildSourceTask, buildSassTask);
+export const production = parallel(buildSourceTask, buildStylesTask);
