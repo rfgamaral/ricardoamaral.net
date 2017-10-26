@@ -81,5 +81,7 @@ export const development = series(
 
 /**
  * Compile source files ready for deployment to GitHub pages.
+ *
+ * @export `production` task.
  */
 export const production = parallel(buildSourceTask, buildSassTask);
