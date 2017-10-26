@@ -1,11 +1,14 @@
 import { dest, parallel, series, src } from 'gulp';
 
+import beautify from 'gulp-beautify';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
 import envalid from 'envalid';
 import gulpif from 'gulp-if';
+import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
+import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 import watch from 'gulp-watch';
 
@@ -60,6 +63,18 @@ function buildStylesTask() {
 }
 
 /**
+ * Beautify (development) or uglify (production) JS files and copies them to the build destination
+ * folder. Any scripts already minified will be copied as-is.
+ */
+function buildScriptsTask() {
+    return merge2(
+        src(['./src/assets/js/**/*.js', '!**/*.min.js'])
+            .pipe(gulpif(environment.isProduction, uglify(), beautify())),
+        src('./src/assets/js/**/*.min.js')
+    ).pipe(dest('./dist/assets/js'));
+}
+
+/**
  * Copy all sources - excluding Sass files - from the development source folder to the build
  * destination folder.
  */
@@ -75,7 +90,7 @@ function buildSourceTask() {
  * @export `development` task.
  */
 export const development = series(
-    parallel(buildSourceTask, buildStylesTask),
+    parallel(buildSourceTask, buildStylesTask, buildScriptsTask),
     parallel(watchStylesTask, initializeBrowserSync)
 );
 
@@ -84,4 +99,4 @@ export const development = series(
  *
  * @export `production` task.
  */
-export const production = parallel(buildSourceTask, buildStylesTask);
+export const production = parallel(buildSourceTask, buildStylesTask, buildScriptsTask);

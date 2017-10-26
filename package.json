@@ -26,13 +26,16 @@
     "envalid": "4.1.1",
     "gh-pages": "1.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-beautify": "2.0.1",
     "gulp-cli": "1.4.0",
     "gulp-cssnano": "2.1.2",
     "gulp-if": "2.0.2",
     "gulp-plumber": "1.1.0",
     "gulp-sass": "3.1.0",
+    "gulp-uglify": "3.0.0",
     "gulp-util": "3.0.8",
     "gulp-watch": "4.3.11",
+    "merge2": "1.2.0",
     "npm-run-all": "4.1.1",
     "rimraf": "2.6.2"
   }
