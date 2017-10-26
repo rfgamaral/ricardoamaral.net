@@ -2,7 +2,10 @@
   "name": "ricardoamaral.net",
   "version": "3.0.0",
   "description": "My personal website based on the Aerial theme from HTML5 UP.",
-  "author": "Ricardo Amaral <webmaster@ricardoamaral.net>",
+  "author": {
+    "name": "Ricardo Amaral",
+    "email": "hello@ricardoamaral.net"
+  },
   "license": "MIT",
   "private": true
 }
