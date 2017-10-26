@@ -1,7 +1,9 @@
 import { dest, parallel, series, src } from 'gulp';
 
 import browserSync from 'browser-sync';
+import cssnano from 'gulp-cssnano';
 import envalid from 'envalid';
+import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
 import util from 'gulp-util';
@@ -52,6 +54,7 @@ function buildSassTask() {
     return src('./src/assets/sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass().on('error', logPluginError))
+        .pipe(gulpif(environment.isProduction, cssnano()))
         .pipe(plumber.stop())
         .pipe(dest('./dist/assets/css'));
 }
