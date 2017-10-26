@@ -39,7 +39,7 @@ function initializeBrowserSync() {
 }
 
 /**
- * Compile development source Sass files if changes are detected and copies them to the build
+ * Compile development source Sass files when changes are detected and copies them to the build
  * destination folder only for changed files.
  */
 function watchStylesTask() {
