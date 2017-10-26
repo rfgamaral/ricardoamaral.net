@@ -1,4 +1,5 @@
 # Build: Dependencies and output files
+dist/
 node_modules/
 
 # Other: Miscellaneous files
