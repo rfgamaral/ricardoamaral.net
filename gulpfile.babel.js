@@ -73,3 +73,8 @@ export const development = series(
     parallel(buildSourceTask, buildSassTask),
     parallel(watchSassTask, initializeBrowserSync)
 );
+
+/**
+ * Compile source files ready for deployment to GitHub pages.
+ */
+export const production = parallel(buildSourceTask, buildSassTask);
