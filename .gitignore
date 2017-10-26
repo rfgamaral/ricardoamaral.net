@@ -3,4 +3,5 @@ dist/
 node_modules/
 
 # Other: Miscellaneous files
+config/cloudflare.yml
 *.log
