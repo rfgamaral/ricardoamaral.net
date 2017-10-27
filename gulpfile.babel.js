@@ -1,6 +1,5 @@
 import { dest, parallel, series, src } from 'gulp';
 
-import beautify from 'gulp-beautify';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
 import envalid from 'envalid';
@@ -71,7 +70,7 @@ function buildStylesTask() {
 function buildScriptsTask() {
     return merge2(
         src(['./src/assets/js/**/*.js', '!**/*.min.js'])
-            .pipe(gulpif(environment.isProduction, uglify(), beautify())),
+            .pipe(gulpif(environment.isProduction, uglify())),
         src('./src/assets/js/**/*.min.js')
     ).pipe(dest('./dist/assets/js'));
 }
