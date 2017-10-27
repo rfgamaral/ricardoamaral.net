@@ -275,14 +275,20 @@
 
 	#footer {
 		@include vendor('background-image', 'linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.5) 75%)');
-		bottom: 0;
-		cursor: default;
-		height: 6em;
+        cursor: default;
+        bottom: 0;
 		left: 0;
-		line-height: 8em;
 		position: absolute;
-		text-align: center;
-		width: 100%;
+        text-align: center;
+        padding: 1em 0;
+        width: 100%;
+
+        .copyright {
+
+            p:nth-child(2) {
+                font-size: 80%;
+            }
+        }
 	}
 
 /* Wide */
