@@ -20,7 +20,7 @@ const browserSyncInstance = browserSync.create();
 /**
  * Auxiliary function to log a plugin error with color support and a formatted message.
  *
- * @param {object} event
+ * @param {object} event Event information pertaining to an `EventEmitter` event.
  */
 function logPluginError(event) {
     util.log(new util.PluginError(event.plugin, event.formatted).toString());
