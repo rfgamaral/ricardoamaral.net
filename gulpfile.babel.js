@@ -64,6 +64,14 @@ function buildStylesTask() {
 }
 
 /**
+ * Watch for script changes and pipes the modified files into the build destination folder.
+ */
+function watchScriptsTask() {
+    return watch('./src/assets/js/**/*.js')
+        .pipe(dest('./dist/assets/js'));
+}
+
+/**
  * Beautify (development) or uglify (production) JS files and pipes them into the build destination
  * folder. Any scripts already minified will be copied as-is.
  */
@@ -73,6 +81,14 @@ function buildScriptsTask() {
             .pipe(gulpif(environment.isProduction, uglify())),
         src('./src/assets/js/**/*.min.js')
     ).pipe(dest('./dist/assets/js'));
+}
+
+/**
+ * Watch for template changes and pipes the modified files into the build destination folder.
+ */
+function watchTemplateTask() {
+    return watch('./src/**/!(*.js|*.scss)')
+        .pipe(dest('./dist'));
 }
 
 /**
@@ -105,7 +121,7 @@ function buildTemplateTask() {
  */
 export const development = series(
     parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
-    parallel(watchStylesTask, initializeBrowserSync)
+    parallel(watchStylesTask, watchScriptsTask, watchTemplateTask, initializeBrowserSync)
 );
 
 /**
