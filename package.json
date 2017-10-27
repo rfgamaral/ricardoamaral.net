@@ -14,7 +14,7 @@
     "clean": "npm-run-all --parallel clean:*",
     "clean:dist": "rimraf dist/",
     "deploy": "npm-run-all clean build gh-pages cf-purge",
-    "gh-pages": "gh-pages --dist dist/ --message \"MY MESSAGE HERE\"",
+    "gh-pages": "gh-pages --dist dist/ --message \"Deploy new website build to GitHub\"",
     "gulp:development": "cross-env NODE_ENV=development gulp development",
     "gulp:production": "cross-env NODE_ENV=production gulp production",
     "serve": "npm-run-all clean gulp:development"
