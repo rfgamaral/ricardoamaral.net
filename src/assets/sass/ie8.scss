@@ -17,7 +17,7 @@
                 position: relative;
                 border: solid 1px _palette(fg);
                 border-radius: 100%;
-                -ms-behavior: url('assets/js/ie/PIE.htc');
+                -ms-behavior: url('../js/ie/PIE.htc');
 
                 &:before {
                     border: 0;
@@ -29,7 +29,7 @@
 /* Footer */
 
     #footer {
-        background-image: url('images/ie/footer.png');
+        background-image: url('../images/ie/footer.png');
         background-position: bottom left;
         background-repeat: repeat-x;
     }

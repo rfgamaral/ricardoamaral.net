@@ -133,7 +133,7 @@
     #overlay {
         @include vendor('animation', 'overlay #{_duration(overlay)} #{$delay-overlay} forwards');
         background-attachment: fixed, fixed;
-        background-image: url('images/overlay-pattern.png'), url('images/overlay.svg');
+        background-image: url('../images/overlay-pattern.png'), url('../images/overlay.svg');
         background-position: top left, center center;
         background-repeat: repeat, no-repeat;
         background-size: auto, cover;
