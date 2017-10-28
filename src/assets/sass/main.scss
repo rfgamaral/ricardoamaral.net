@@ -45,7 +45,7 @@
 
     body, input, select, textarea {
         color: _palette(fg);
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: _font(primary);
         font-size: 15pt;
         font-weight: 300 !important;
         letter-spacing: -0.025em;
