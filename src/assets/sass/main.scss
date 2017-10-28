@@ -15,8 +15,8 @@
         wide: '(max-width: 1680px)',
         normal: '(max-width: 1280px)',
         mobile: '(max-width: 736px)',
-        mobilep: '(max-width: 480px)',
-        mobilel: '(max-height: 480px)',
+        mobilePortrait: '(max-width: 480px)',
+        mobileLandscape: '(max-height: 480px)',
     ));
 
     @include skel-layout((
@@ -415,7 +415,7 @@
 
 /* Mobile (Portrait) */
 
-    @include breakpoint(mobilep) {
+    @include breakpoint(mobilePortrait) {
 
         /* BG */
 
@@ -433,7 +433,7 @@
 
 /* Mobile (Landscape) */
 
-    @include breakpoint(mobilel) {
+    @include breakpoint(mobileLandscape) {
 
         /* BG */
 
