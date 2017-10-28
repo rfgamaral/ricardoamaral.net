@@ -319,11 +319,15 @@
         left: 0;
         position: absolute;
         text-align: center;
-        padding: 1em 0;
+        padding: 0.7em 0;
         width: 100%;
         text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 1);
 
         .copyright {
+            p {
+                line-height: 1.6em;
+            }
+
             p:nth-child(2) {
                 font-size: 80%;
             }
