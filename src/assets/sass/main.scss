@@ -191,6 +191,42 @@
         width: 90%;
         text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.8);
 
+        #avatar {
+            position: relative;
+            margin: 0 auto 1.5em;
+            width: _size(avatar);
+            height: _size(avatar);
+        }
+
+        #avatar::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: url("../images/profile-picture.jpg");
+            background-size: _size(avatar);
+            border-radius: 50%;
+            opacity: 0.70;
+            content: '';
+        }
+
+        #avatar::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-image: url("../images/profile-picture.jpg");
+            background-size: _size(avatar);
+            background-position: center;
+            border-radius: 50%;
+            height: _size(avatar) * 0.88;
+            width: _size(avatar) * 0.88;
+            content: '';
+        }
+
         h1 {
             font-size: 4.35em;
             font-weight: 900;
