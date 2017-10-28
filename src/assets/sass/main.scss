@@ -15,7 +15,8 @@
         wide: '(max-width: 1680px)',
         normal: '(max-width: 1280px)',
         mobile: '(max-width: 736px)',
-        mobilep: '(max-width: 480px)'
+        mobilep: '(max-width: 480px)',
+        mobilel: '(max-height: 480px)',
     ));
 
     @include skel-layout((
@@ -425,6 +426,24 @@
             #header {
                 nav {
                     padding: 0 1em;
+                }
+            }
+
+    }
+
+/* Mobile (Landscape) */
+
+    @include breakpoint(mobilel) {
+
+        /* BG */
+
+            @include bg(_misc(bg-width) * 0.275);
+
+        /* Header */
+
+            #header {
+                #avatar {
+                    display: none;
                 }
             }
 
