@@ -29,7 +29,7 @@
             100%	{ @include vendor('transform', 'translate3d(#{$width * -1},0,0)'); }
         }
 
-        #bg {
+        #background {
             background-size: $width auto;
             width: ($width * 3);
         }
@@ -103,9 +103,9 @@
         width: 100%;
     }
 
-/* BG */
+/* Background */
 
-    #bg {
+    #background {
         @include vendor('animation', 'bg #{_duration(bg)} linear infinite');
         @include vendor('backface-visibility', 'hidden');
         @include vendor('transform', 'translate3d(0,0,0)');
