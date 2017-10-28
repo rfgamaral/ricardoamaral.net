@@ -20,7 +20,7 @@
     "serve": "npm-run-all clean gulp:development"
   },
   "devDependencies": {
-    "babel-preset-es2015": "6.24.1",
+    "babel-preset-env": "1.6.1",
     "babel-register": "6.26.0",
     "browser-sync": "2.18.13",
     "cloudflare-cli": "2.2.0",
