@@ -400,28 +400,28 @@
                 }
             }
 
-        @include media('portrait') {
+    }
 
-            /* Header */
+    @include media('<=small', 'portrait') {
 
-                #header {
-                    nav {
-                        padding: 0 1em;
-                    }
+        /* Header */
+
+            #header {
+                nav {
+                    padding: 0 1em;
                 }
+            }
 
-        }
+    }
 
-        @include media('landscape') {
+    @include media('<=small', 'landscape') {
 
-            /* Header */
+        /* Header */
 
-                #header {
-                    #avatar {
-                        display: none;
-                    }
+            #header {
+                #avatar {
+                    display: none;
                 }
-
-        }
+            }
 
     }
