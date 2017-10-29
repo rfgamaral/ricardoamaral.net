@@ -12,13 +12,6 @@
     @return val($font, $keys...);
 }
 
-/// Gets a misc value.
-/// @param {string} $keys Key(s).
-/// @return {string} Value.
-@function _misc($keys...) {
-    @return val($misc, $keys...);
-}
-
 /// Gets a palette value.
 /// @param {string} $keys Key(s).
 /// @return {string} Value.

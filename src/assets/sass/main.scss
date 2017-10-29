@@ -24,6 +24,12 @@
         boxModel: 'border'
     ));
 
+    @mixin bg($size) {
+        #background {
+            background-image: url('../images/background-#{$size}.jpg');
+        }
+    }
+
     $delay-wrapper:			_duration(wrapper) - 1s;
     $delay-overlay:			$delay-wrapper - 0.5s;
     $delay-header:			$delay-overlay + _duration(overlay) - 0.75s;
@@ -100,9 +106,13 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: _misc(bg);
+        background-color: #1c5466;
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
     }
+
+    @include bg('1920w');
 
 /* Overlay */
 
