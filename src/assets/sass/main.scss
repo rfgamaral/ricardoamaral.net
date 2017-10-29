@@ -346,6 +346,10 @@
                 font-size: 13pt;
             }
 
+        /* Background */
+
+            @include bg('1680w');
+
     }
 
 /* Desktop */
@@ -357,6 +361,38 @@
             body, input, select, textarea {
                 font-size: 12pt;
             }
+
+    }
+
+    @include media('height>=small', '<=normal', 'portrait') {
+
+        /* Background */
+
+            @include bg('1280h');
+
+    }
+
+    @include media('height>=small', '<=normal', 'portrait', 'retina2x') {
+
+        /* Background */
+
+            @include bg('1280h@2x');
+
+    }
+
+    @include media('width>=small', '<=normal', 'landscape') {
+
+        /* Background */
+
+            @include bg('1280w');
+
+    }
+
+    @include media('width>=small', '<=normal', 'landscape', 'retina2x') {
+
+        /* Background */
+
+            @include bg('1280w@2x');
 
     }
 
@@ -404,6 +440,10 @@
 
     @include media('height<=small', 'portrait') {
 
+        /* Background */
+
+            @include bg('736h');
+
         /* Header */
 
             #header {
@@ -414,7 +454,19 @@
 
     }
 
+    @include media('height<=small', 'portrait', 'retina2x') {
+
+        /* Background */
+
+            @include bg('736h@2x');
+
+    }
+
     @include media('width<=small', 'landscape') {
+
+        /* Background */
+
+            @include bg('736w');
 
         /* Header */
 
@@ -423,6 +475,14 @@
                     display: none;
                 }
             }
+
+    }
+
+     @include media('width<=small', 'landscape', 'retina2x') {
+
+        /* Background */
+
+            @include bg('736w@2x');
 
     }
 
@@ -437,5 +497,37 @@
                     display: none;
                 }
             }
+
+    }
+
+    @include media('height<=xSmall', 'portrait') {
+
+        /* Background */
+
+            @include bg('480h');
+
+    }
+
+    @include media('height<=xSmall', 'portrait', 'retina2x') {
+
+        /* Background */
+
+            @include bg('480h@2x');
+
+    }
+
+    @include media('width<=xSmall', 'landscape') {
+
+        /* Background */
+
+            @include bg('480w');
+
+    }
+
+    @include media('width<=xSmall', 'landscape', 'retina2x') {
+
+        /* Background */
+
+            @include bg('480h@2x');
 
     }
