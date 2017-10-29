@@ -402,7 +402,7 @@
 
     }
 
-    @include media('<=small', 'portrait') {
+    @include media('height<=small', 'portrait') {
 
         /* Header */
 
@@ -414,7 +414,7 @@
 
     }
 
-    @include media('<=small', 'landscape') {
+    @include media('width<=small', 'landscape') {
 
         /* Header */
 
