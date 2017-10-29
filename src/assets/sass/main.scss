@@ -24,18 +24,6 @@
         boxModel: 'border'
     ));
 
-    @mixin bg($width) {
-        @include keyframes('bg') {
-            0%		{ @include vendor('transform', 'translate3d(0,0,0)'); }
-            100%	{ @include vendor('transform', 'translate3d(#{$width * -1},0,0)'); }
-        }
-
-        #background {
-            background-size: $width auto;
-            width: ($width * 3);
-        }
-    }
-
     $delay-wrapper:			_duration(wrapper) - 1s;
     $delay-overlay:			$delay-wrapper - 0.5s;
     $delay-header:			$delay-overlay + _duration(overlay) - 0.75s;
@@ -107,22 +95,14 @@
 /* Background */
 
     #background {
-        @include vendor('animation', 'bg #{_duration(bg)} linear infinite');
-        @include vendor('backface-visibility', 'hidden');
-        @include vendor('transform', 'translate3d(0,0,0)');
-
-        /* Set your background with this */
-        background: _misc(bg);
-
-        background-repeat: repeat-x;
-        height: 100%;
-        left: 0;
-        opacity: 1;
         position: fixed;
         top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: _misc(bg);
+        background-size: cover;
     }
-
-    @include bg(_misc(bg-width) * 1.5);
 
 /* Overlay */
 
@@ -345,10 +325,6 @@
                 font-size: 13pt;
             }
 
-        /* BG */
-
-            @include bg(_misc(bg-width));
-
     }
 
 /* Normal */
@@ -360,10 +336,6 @@
             body, input, select, textarea {
                 font-size: 12pt;
             }
-
-        /* BG */
-
-            @include bg(_misc(bg-width) * 0.5);
 
     }
 
@@ -380,10 +352,6 @@
             body, input, select, textarea {
                 font-size: 11pt;
             }
-
-        /* BG */
-
-            @include bg(_misc(bg-width) * 0.2);
 
         /* Header */
 
@@ -417,10 +385,6 @@
 
     @include breakpoint(mobilePortrait) {
 
-        /* BG */
-
-            @include bg(_misc(bg-width) * 0.275);
-
         /* Header */
 
             #header {
@@ -434,10 +398,6 @@
 /* Mobile (Landscape) */
 
     @include breakpoint(mobileLandscape) {
-
-        /* BG */
-
-            @include bg(_misc(bg-width) * 0.275);
 
         /* Header */
 
