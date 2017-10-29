@@ -1,6 +1,63 @@
 (function () {
+    function initTwinklingStars() {
+        particlesJS('stars', {
+            particles: {
+                number: {
+                    value: 180,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ffffff'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 1,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 3,
+                        opacity_min: 0
+                    }
+                },
+                size: {
+                    value: 1.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        size_min: 0.5,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 50,
+                    direction: 'none',
+                    random: true,
+                    straight: true,
+                    out_mode: 'bounce'
+                }
+            },
+            retina_detect: true
+        });
+    }
+
     window.onload = function () {
         document.body.className = '';
+        initTwinklingStars();
+    }
+
+    window.onresize = function () {
+        clearTimeout(window.onResizeEnd);
+        window.onResizeEnd = setTimeout(initTwinklingStars, 250);
     }
 
     window.ontouchmove = function () {

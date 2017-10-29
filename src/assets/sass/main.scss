@@ -114,6 +114,16 @@
 
     @include bg('1920w');
 
+/* Stars Particles */
+
+    #stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 50%;
+        right: 0;
+    }
+
 /* Overlay */
 
     @include keyframes('overlay') {
