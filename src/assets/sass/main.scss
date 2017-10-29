@@ -10,14 +10,7 @@
 */
 
     @import "libs/skel";
-
-    @include skel-breakpoints((
-        wide: '(max-width: 1680px)',
-        normal: '(max-width: 1280px)',
-        mobile: '(max-width: 736px)',
-        mobilePortrait: '(max-width: 480px)',
-        mobileLandscape: '(max-height: 480px)',
-    ));
+    @import "libs/include-media";
 
     @include skel-layout((
         reset: 'full',
@@ -29,6 +22,13 @@
             background-image: url('../images/background-#{$size}.jpg');
         }
     }
+
+    $breakpoints: (
+        large: 1680px,
+        normal: 1280px,
+        small: 736px,
+        xSmall: 480px
+    );
 
     $delay-wrapper:			_duration(wrapper) - 1s;
     $delay-overlay:			$delay-wrapper - 0.5s;
@@ -335,9 +335,9 @@
         }
     }
 
-/* Wide */
+/* Desktop (Wide) */
 
-    @include breakpoint(wide) {
+    @include media('>=normal', '<=large') {
 
         /* Basic */
 
@@ -347,9 +347,9 @@
 
     }
 
-/* Normal */
+/* Desktop */
 
-    @include breakpoint(normal) {
+    @include media('>=small', '<=normal') {
 
         /* Basic */
 
@@ -361,7 +361,7 @@
 
 /* Mobile */
 
-    @include breakpoint(mobile) {
+    @include media('<=small') {
 
         /* Basic */
 
@@ -399,32 +399,28 @@
                 }
             }
 
-    }
+        @include media('portrait') {
 
-/* Mobile (Portrait) */
+            /* Header */
 
-    @include breakpoint(mobilePortrait) {
-
-        /* Header */
-
-            #header {
-                nav {
-                    padding: 0 1em;
+                #header {
+                    nav {
+                        padding: 0 1em;
+                    }
                 }
-            }
 
-    }
+        }
 
-/* Mobile (Landscape) */
+        @include media('landscape') {
 
-    @include breakpoint(mobileLandscape) {
+            /* Header */
 
-        /* Header */
-
-            #header {
-                #avatar {
-                    display: none;
+                #header {
+                    #avatar {
+                        display: none;
+                    }
                 }
-            }
+
+        }
 
     }
