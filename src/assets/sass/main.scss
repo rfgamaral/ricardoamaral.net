@@ -425,3 +425,17 @@
             }
 
     }
+
+/* Mobile (low-res) */
+
+    @include media('<=xSmall') {
+
+        /* Header */
+
+            #header {
+                #avatar {
+                    display: none;
+                }
+            }
+
+    }
