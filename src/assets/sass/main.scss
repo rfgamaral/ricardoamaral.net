@@ -4,7 +4,7 @@
 @import 'libs/mixins';
 @import 'libs/vars';
 
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900');
 
 /*!
     Aerial by HTML5 UP
@@ -205,7 +205,7 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background-image: url("../images/profile-picture.jpg");
+            background-image: url('../images/profile-picture.jpg');
             background-size: _size(avatar);
             border-radius: 50%;
             opacity: 0.70;
@@ -219,7 +219,7 @@
             bottom: 0;
             right: 0;
             margin: auto;
-            background-image: url("../images/profile-picture.jpg");
+            background-image: url('../images/profile-picture.jpg');
             background-size: _size(avatar);
             background-position: center;
             border-radius: 50%;

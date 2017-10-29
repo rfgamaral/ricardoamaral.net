@@ -80,13 +80,13 @@
         $result: null;
 
         @if type-of($index) != number {
-            @warn "$index: #{quote($index)} is not a number for `remove-nth`.";
+            @warn '$index: #{quote($index)} is not a number for `remove-nth`.';
         }
         @else if $index == 0 {
-            @warn "List index 0 must be a non-zero integer for `remove-nth`.";
+            @warn 'List index 0 must be a non-zero integer for `remove-nth`.';
         }
         @else if abs($index) > length($list) {
-            @warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
+            @warn 'List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.';
         }
         @else {
 
@@ -399,7 +399,7 @@
                     margin-right: auto;
                 }
 
-                // Use default is $containers is just "true".
+                // Use default is $containers is just 'true'.
                     @if $containers == true {
                         $containers: 960px;
                     }
@@ -440,7 +440,7 @@
 
                 /* Grid */
 
-                // Use defaults if $grid is just "true".
+                // Use defaults if $grid is just 'true'.
                     @if $grid == true {
                         $grid: ();
                     }
