@@ -68,7 +68,8 @@ function buildStylesTask() {
  */
 function watchScriptsTask() {
     return watch('./src/assets/js/**/*.js')
-        .pipe(dest('./dist/assets/js'));
+        .pipe(dest('./dist/assets/js'))
+        .pipe(browserSyncInstance.stream());
 }
 
 /**
@@ -88,7 +89,8 @@ function buildScriptsTask() {
  */
 function watchTemplateTask() {
     return watch('./src/**/!(*.js|*.scss)')
-        .pipe(dest('./dist'));
+        .pipe(dest('./dist'))
+        .pipe(browserSyncInstance.stream());
 }
 
 /**
