@@ -1,5 +1,6 @@
 (function () {
-    function initTwinklingStars() {
+    function initTwinklingStars(devicePixelRatio) {
+
         particlesJS('stars', {
             particles: {
                 number: {
@@ -25,12 +26,12 @@
                     }
                 },
                 size: {
-                    value: 1.5,
+                    value: 1.5 / devicePixelRatio,
                     random: true,
                     anim: {
                         enable: true,
                         speed: 1,
-                        size_min: 0.5,
+                        size_min: 0.5 / devicePixelRatio,
                         sync: false
                     }
                 },
@@ -51,8 +52,8 @@
     }
 
     window.onload = function () {
+        initTwinklingStars(window.devicePixelRatio / 1.5 || 1);
         document.body.className = '';
-        initTwinklingStars();
     }
 
     window.onresize = function () {
