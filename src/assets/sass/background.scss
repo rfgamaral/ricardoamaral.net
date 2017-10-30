@@ -95,5 +95,5 @@
     }
 
     @include media('width<=xsmall', 'landscape', 'retina2x') {
-        @include background('480h@2x');
+        @include background('480w@2x');
     }
