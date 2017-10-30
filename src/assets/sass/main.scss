@@ -394,7 +394,7 @@
 
     }
 
-    @include media('<=xsmall') {
+    @include media('height<=xsmall') {
 
         /* Header */
 
