@@ -1,3 +1,11 @@
+// Breakpoints.
+    $breakpoints: (
+        large: 1680px,
+        normal: 1280px,
+        small: 736px,
+        xSmall: 480px
+    );
+
 // Duration.
     $duration: (
         bg: 60s,

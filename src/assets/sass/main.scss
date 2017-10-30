@@ -1,7 +1,7 @@
-@import 'libs/skel';
 @import 'libs/functions';
 @import 'libs/include-media';
 @import 'libs/mixins';
+@import 'libs/skel';
 @import 'libs/vars';
 
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900');
@@ -16,19 +16,6 @@
         reset: 'full',
         boxModel: 'border'
     ));
-
-    @mixin bg($size) {
-        #background {
-            background-image: url('../images/background-#{$size}.jpg');
-        }
-    }
-
-    $breakpoints: (
-        large: 1680px,
-        normal: 1280px,
-        small: 736px,
-        xSmall: 480px
-    );
 
     $delay-wrapper:			_duration(wrapper) - 1s;
     $delay-overlay:			$delay-wrapper - 0.5s;
@@ -98,21 +85,7 @@
         width: 100%;
     }
 
-/* Background */
 
-    #background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: #1c5466;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-    }
-
-    @include bg('1920w');
 
 /* Stars Particles */
 
@@ -345,10 +318,6 @@
                 font-size: 13pt;
             }
 
-        /* Background */
-
-            @include bg('1680w');
-
     }
 
 /* Desktop */
@@ -360,38 +329,6 @@
             body, input, select, textarea {
                 font-size: 12pt;
             }
-
-    }
-
-    @include media('height>=small', '<=normal', 'portrait') {
-
-        /* Background */
-
-            @include bg('1280h');
-
-    }
-
-    @include media('height>=small', '<=normal', 'portrait', 'retina2x') {
-
-        /* Background */
-
-            @include bg('1280h@2x');
-
-    }
-
-    @include media('width>=small', '<=normal', 'landscape') {
-
-        /* Background */
-
-            @include bg('1280w');
-
-    }
-
-    @include media('width>=small', '<=normal', 'landscape', 'retina2x') {
-
-        /* Background */
-
-            @include bg('1280w@2x');
 
     }
 
@@ -439,10 +376,6 @@
 
     @include media('height<=small', 'portrait') {
 
-        /* Background */
-
-            @include bg('736h');
-
         /* Header */
 
             #header {
@@ -453,19 +386,7 @@
 
     }
 
-    @include media('height<=small', 'portrait', 'retina2x') {
-
-        /* Background */
-
-            @include bg('736h@2x');
-
-    }
-
     @include media('width<=small', 'landscape') {
-
-        /* Background */
-
-            @include bg('736w');
 
         /* Header */
 
@@ -474,14 +395,6 @@
                     display: none;
                 }
             }
-
-    }
-
-     @include media('width<=small', 'landscape', 'retina2x') {
-
-        /* Background */
-
-            @include bg('736w@2x');
 
     }
 
@@ -496,37 +409,5 @@
                     display: none;
                 }
             }
-
-    }
-
-    @include media('height<=xSmall', 'portrait') {
-
-        /* Background */
-
-            @include bg('480h');
-
-    }
-
-    @include media('height<=xSmall', 'portrait', 'retina2x') {
-
-        /* Background */
-
-            @include bg('480h@2x');
-
-    }
-
-    @include media('width<=xSmall', 'landscape') {
-
-        /* Background */
-
-            @include bg('480w');
-
-    }
-
-    @include media('width<=xSmall', 'landscape', 'retina2x') {
-
-        /* Background */
-
-            @include bg('480h@2x');
 
     }
