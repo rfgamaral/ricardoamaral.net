@@ -1,5 +1,6 @@
 import { dest, parallel, series, src } from 'gulp';
 
+import babel from 'gulp-babel';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
 import envalid from 'envalid';
@@ -70,6 +71,7 @@ function buildStylesTask() {
  */
 function watchScriptsTask() {
     return watch('./src/assets/js/**/*.js')
+        .pipe(babel())
         .pipe(dest('./dist/assets/js'))
         .pipe(browserSyncInstance.stream());
 }
@@ -81,6 +83,7 @@ function watchScriptsTask() {
 function buildScriptsTask() {
     return merge2(
         src(['./src/assets/js/**/*.js', '!**/*.min.js'])
+            .pipe(babel())
             .pipe(gulpif(environment.isProduction, uglify())),
         src('./src/assets/js/**/*.min.js')
     ).pipe(dest('./dist/assets/js'));
