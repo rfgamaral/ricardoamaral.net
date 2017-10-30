@@ -17,11 +17,11 @@
         boxModel: 'border'
     ));
 
-    $delay-wrapper:			_duration(wrapper) - 1s;
-    $delay-overlay:			$delay-wrapper - 0.5s;
-    $delay-header:			$delay-overlay + _duration(overlay) - 0.75s;
-    $delay-nav-icons:		$delay-header + _duration(header) - 1s;
-    $delay-nav-icon:		0.25s;
+    $delay-wrapper: _duration(wrapper) - 1s;
+    $delay-overlay: $delay-wrapper - 0.5s;
+    $delay-header: $delay-overlay + _duration(overlay) - 0.75s;
+    $delay-nav-icons: $delay-header + _duration(header) - 1s;
+    $delay-nav-icon: 0.25s;
 
 /* Basic */
 
@@ -100,8 +100,13 @@
 /* Overlay */
 
     @include keyframes('overlay') {
-        0%		{ opacity: 0; }
-        100%	{ opacity: 1; }
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
     #overlay {
@@ -142,13 +147,27 @@
 /* Header */
 
     @include keyframes('header') {
-        0%		{ @include vendor('transform', 'translate3d(0,1em,0)'); opacity: 0; }
-        100%	{ @include vendor('transform', 'translate3d(0,0,0)'); opacity: 1; }
+        0% {
+            @include vendor('transform', 'translate3d(0,1em,0)');
+            opacity: 0;
+        }
+
+        100% {
+            @include vendor('transform', 'translate3d(0,0,0)');
+            opacity: 1;
+        }
     }
 
     @include keyframes('nav-icons') {
-        0%		{ @include vendor('transform', 'translate3d(0,1em,0)'); opacity: 0; }
-        100%	{ @include vendor('transform', 'translate3d(0,0,0)'); opacity: 1; }
+        0% {
+            @include vendor('transform', 'translate3d(0,1em,0)');
+            opacity: 0;
+        }
+
+        100% {
+            @include vendor('transform', 'translate3d(0,0,0)');
+            opacity: 1;
+        }
     }
 
     #header {
