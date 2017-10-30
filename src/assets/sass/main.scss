@@ -23,6 +23,12 @@
     $delay-nav-icons: $delay-header + _duration(header) - 1s;
     $delay-nav-icon: 0.25s;
 
+    @mixin hide-avatar-element() {
+        #avatar {
+            display: none;
+        }
+    }
+
 /* Basic */
 
     body, input, select, textarea {
@@ -405,11 +411,7 @@
 
         /* Header */
 
-            #header {
-                #avatar {
-                    display: none;
-                }
-            }
+            @include hide-avatar-element();
 
     }
 
@@ -417,10 +419,6 @@
 
         /* Header */
 
-            #header {
-                #avatar {
-                    display: none;
-                }
-            }
+            @include hide-avatar-element();
 
     }
