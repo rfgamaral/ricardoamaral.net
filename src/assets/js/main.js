@@ -52,7 +52,7 @@
     }
 
     window.onload = function () {
-        initTwinklingStars(window.devicePixelRatio / 1.5 || 1);
+        initTwinklingStars(Math.min(window.devicePixelRatio, 3) || 1);
         document.body.className = '';
     }
 
