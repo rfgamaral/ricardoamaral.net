@@ -1,5 +1,6 @@
 (function () {
-    function initTwinklingStars(devicePixelRatio) {
+    function initTwinklingStars() {
+        const devicePixelRatio = Math.min(window.devicePixelRatio, 3) || 1;
 
         particlesJS('stars', {
             particles: {
@@ -52,8 +53,8 @@
     }
 
     window.onload = function () {
-        initTwinklingStars(Math.min(window.devicePixelRatio, 3) || 1);
         document.body.className = '';
+        initTwinklingStars();
     }
 
     window.onresize = function () {
