@@ -26,8 +26,8 @@ function logPluginError(event) {
 }
 
 /**
- * Launch the `browser-sync` HTTP server while watching for file changes and refreshing the browser
- * or the assets accordingly.
+ * Launch the Browsersync HTTP server while watching for file changes and refreshing the browser
+ * or injecting assets on-the-fly.
  */
 function initializeBrowserSync() {
     browserSyncInstance.init({
@@ -39,8 +39,8 @@ function initializeBrowserSync() {
 }
 
 /**
- * Compile development source Sass files when changes are detected and pipes them into the build
- * destination folder only for changed files.
+ * Watch style related files for changes and pipe the modified ones into the build destination
+ * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchStylesTask() {
     return watch('./src/assets/sass/**/*.scss')
@@ -52,7 +52,8 @@ function watchStylesTask() {
 }
 
 /**
- * Compile development source Sass files and pipes them into the build destination folder.
+ * Build style related files for either production or development. If building for production,
+ * all CSS files will be minified and optimized.
  */
 function buildStylesTask() {
     return src('./src/assets/sass/**/*.scss')
@@ -64,7 +65,8 @@ function buildStylesTask() {
 }
 
 /**
- * Watch for script changes and pipes the modified files into the build destination folder.
+ * Watch script related files for changes and pipe the modified ones into the build destination
+ * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchScriptsTask() {
     return watch('./src/assets/js/**/*.js')
@@ -73,8 +75,8 @@ function watchScriptsTask() {
 }
 
 /**
- * Beautify (development) or uglify (production) JS files and pipes them into the build destination
- * folder. Any scripts already minified will be copied as-is.
+ * Build script related files for either production or development. If building for production,
+ * all JS filles will be uglified.
  */
 function buildScriptsTask() {
     return merge2(
@@ -85,7 +87,8 @@ function buildScriptsTask() {
 }
 
 /**
- * Watch for template changes and pipes the modified files into the build destination folder.
+ * Watch template related files for changes and pipe the modified ones into the build destination
+ * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchTemplateTask() {
     return watch('./src/**/!(*.js|*.scss)')
@@ -94,8 +97,8 @@ function watchTemplateTask() {
 }
 
 /**
- * Minify the main HTML template and pipes it into the build destination folder along with all
- * related files not previously processed by other tasks.
+ * Build template related files for either production or development. If building for production,
+ * all HTML will be minified and server-side includes will be parsed.
  */
 function buildTemplateTask() {
     return merge2(
@@ -116,8 +119,8 @@ function buildTemplateTask() {
 }
 
 /**
- * Compile source files and launch `browser-sync` development server. Changes you make will either
- * be injected into the page (CSS and images) or will cause all browsers to do a full-page refresh.
+ * Compile source files and launch a Browsersync development server. Changes made will either be
+ * injected into the page or will cause all browsers to do a full-page refresh.
  *
  * @export `development` task.
  */
