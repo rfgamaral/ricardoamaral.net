@@ -28,62 +28,72 @@
 
     @include background('1920w');
 
-/* Desktop (Wide) */
+/*Extra Large Devices */
 
-    @include media('>=normal', '<=large') {
+    @include media('>large', '<=xlarge') {
         @include background('1680w');
     }
 
-/* Desktop */
+/* Large Devices */
 
-    @include media('height>=small', '<=normal', 'portrait') {
+    @include media('>medium', '<=large') {
+        @include background('1440w');
+    }
+
+    @include media('>medium', '<=large', 'retina2x') {
+        @include background('1440w@2x');
+    }
+
+/* Medium Devices */
+
+    @include media('height>small', '<=medium', 'portrait') {
         @include background('1280h');
     }
 
-    @include media('height>=small', '<=normal', 'portrait', 'retina2x') {
+    @include media('height>small', '<=medium', 'portrait', 'retina2x') {
         @include background('1280h@2x');
     }
 
-    @include media('width>=small', '<=normal', 'landscape') {
+    @include media('width>small', '<=medium', 'landscape') {
         @include background('1280w');
     }
 
-    @include media('width>=small', '<=normal', 'landscape', 'retina2x') {
+    @include media('width>small', '<=medium', 'landscape', 'retina2x') {
         @include background('1280w@2x');
     }
 
-/* Mobile */
+/* Small Devices */
 
-    @include media('height<=small', 'portrait') {
+    @include media('height>xsmall', '<=small', 'portrait') {
         @include background('736h');
     }
 
-    @include media('height<=small', 'portrait', 'retina2x') {
+    @include media('height>xsmall', '<=small', 'portrait', 'retina2x') {
         @include background('736h@2x');
     }
 
-    @include media('width<=small', 'landscape') {
+    @include media('width>xsmall', '<=small', 'landscape') {
         @include background('736w');
     }
 
-     @include media('width<=small', 'landscape', 'retina2x') {
+     @include media('width>xsmall', '<=small', 'landscape', 'retina2x') {
         @include background('736w@2x');
     }
 
-/* Mobile (low-res) */
+/* Extra Small Devices */
 
-    @include media('height<=xSmall', 'portrait') {
+    @include media('height<=xsmall', 'portrait') {
         @include background('480h');
     }
 
-    @include media('height<=xSmall', 'portrait', 'retina2x') {
+    @include media('height<=xsmall', 'portrait', 'retina2x') {
         @include background('480h@2x');
     }
 
-    @include media('width<=xSmall', 'landscape') {
+    @include media('width<=xsmall', 'landscape') {
         @include background('480w');
     }
 
-    @include media('width<=xSmall', 'landscape', 'retina2x') {
+    @include media('width<=xsmall', 'landscape', 'retina2x') {
         @include background('480h@2x');
     }

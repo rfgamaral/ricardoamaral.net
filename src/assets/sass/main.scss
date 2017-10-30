@@ -308,9 +308,9 @@
         }
     }
 
-/* Desktop (Wide) */
+/* Device Specific Tweaks*/
 
-    @include media('>=normal', '<=large') {
+    @include media('>medium', '<=xlarge') {
 
         /* Basic */
 
@@ -320,9 +320,7 @@
 
     }
 
-/* Desktop */
-
-    @include media('>=small', '<=normal') {
+    @include media('>small', '<=medium') {
 
         /* Basic */
 
@@ -331,8 +329,6 @@
             }
 
     }
-
-/* Mobile */
 
     @include media('<=small') {
 
@@ -398,9 +394,7 @@
 
     }
 
-/* Mobile (low-res) */
-
-    @include media('<=xSmall') {
+    @include media('<=xsmall') {
 
         /* Header */
 
