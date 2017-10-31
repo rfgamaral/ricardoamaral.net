@@ -72,9 +72,9 @@ function buildStylesTask() {
  * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchScriptsTask() {
-    return watch('./src/assets/js/**/*.js')
+    return watch('./src/assets/scripts/**/*.js')
         .pipe(babel())
-        .pipe(dest('./dist/assets/js'))
+        .pipe(dest('./dist/assets/scripts'))
         .pipe(browserSyncInstance.stream());
 }
 
@@ -84,11 +84,11 @@ function watchScriptsTask() {
  */
 function buildScriptsTask() {
     return merge2(
-        src(['./src/assets/js/**/*.js', '!**/*.min.js'])
+        src(['./src/assets/scripts/**/*.js', '!**/*.min.js'])
             .pipe(babel())
             .pipe(gulpif(environment.isProduction, uglify())),
-        src('./src/assets/js/**/*.min.js')
-    ).pipe(dest('./dist/assets/js'));
+        src('./src/assets/scripts/**/*.min.js')
+    ).pipe(dest('./dist/assets/scripts'));
 }
 
 /**
