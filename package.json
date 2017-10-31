@@ -25,7 +25,7 @@
     ]
   },
   "browserslist": [
-    "last 3 versions"
+    "last 2 versions"
   ],
   "devDependencies": {
     "babel-preset-env": "1.6.1",
