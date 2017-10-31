@@ -46,13 +46,13 @@
 
         &.loading{
             * {
-                @include vendor('animation', 'none !important');
+                animation: none !important;
             }
         }
     }
 
     a {
-        @include vendor('transition', 'border-color 0.2s ease-in-out');
+        transition: border-color 0.2s ease-in-out;
         border-bottom: dotted 1px;
         color: inherit;
         outline: 0;
@@ -82,7 +82,7 @@
     }
 
     #wrapper {
-        @include vendor('animation', 'wrapper #{_duration(wrapper)} forwards');
+        animation: wrapper _duration(wrapper) forwards;
         height: 100%;
         left: 0;
         opacity: 0;
@@ -90,8 +90,6 @@
         top: 0;
         width: 100%;
     }
-
-
 
 /* Stars */
 
@@ -116,7 +114,7 @@
     }
 
     #overlay {
-        @include vendor('animation', 'overlay #{_duration(overlay)} #{$delay-overlay} forwards');
+        animation: overlay _duration(overlay) $delay-overlay forwards;
         background-attachment: fixed, fixed;
         background-image: url('../images/overlay-pattern.png'), url('../images/overlay.svg');
         background-position: top left, center center;
@@ -154,33 +152,32 @@
 
     @include keyframes('header') {
         0% {
-            @include vendor('transform', 'translate3d(0,1em,0)');
+            transform: translate3d(0, 1em, 0);
             opacity: 0;
         }
 
         100% {
-            @include vendor('transform', 'translate3d(0,0,0)');
+            transform: translate3d(0, 0, 0);
             opacity: 1;
         }
     }
 
     @include keyframes('nav-icons') {
         0% {
-            @include vendor('transform', 'translate3d(0,1em,0)');
+            transform: translate3d(0, 1em, 0);
             opacity: 0;
         }
 
         100% {
-            @include vendor('transform', 'translate3d(0,0,0)');
+            transform: translate3d(0, 0, 0);
             opacity: 1;
         }
     }
 
     #header {
-        @include vendor('animation', 'header #{_duration(header)} #{$delay-header} forwards');
-        @include vendor('backface-visibility', 'hidden');
-        @include vendor('transform', 'translate3d(0,0,0)');
-        cursor: default;
+        animation: header _duration(header) $delay-header forwards;
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
         display: inline-block;
         opacity: 0;
         position: relative;
@@ -189,6 +186,7 @@
         vertical-align: middle;
         width: 90%;
         text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.8);
+        cursor: default;
 
         #avatar {
             position: relative;
@@ -243,9 +241,9 @@
             margin: 1.5em 0 0 0;
 
             li {
-                @include vendor('animation', 'nav-icons #{_duration(nav-icons)} ease-in-out forwards');
-                @include vendor('backface-visibility', 'hidden');
-                @include vendor('transform', 'translate3d(0,0,0)');
+                animation: nav-icons _duration(nav-icons) ease-in-out forwards;
+                backface-visibility: hidden;
+                transform: translate3d(0, 0, 0);
                 display: inline-block;
                 height: _size(nav-icon-wrapper);
                 line-height: _size(nav-icon-wrapper) * 1.1;
@@ -257,7 +255,7 @@
 
                 @for $x from 1 through 10 {
                     &:nth-child(#{$x}) {
-                        @include vendor('animation-delay', ($delay-nav-icons + ($x * $delay-nav-icon)) + '');
+                        animation-delay: $delay-nav-icons + ($x * $delay-nav-icon);
                     }
                 }
             }
@@ -269,7 +267,7 @@
                 display: inline-block;
 
                 &:before {
-                    @include vendor('transition', 'all 0.2s ease-in-out');
+                    transition: all 0.2s ease-in-out;
                     border-radius: 100%;
                     border: solid 1px _palette(fg);
                     display: block;
@@ -312,8 +310,7 @@
 /* Footer */
 
     #footer {
-        @include vendor('background-image', 'linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.5) 90%)');
-        cursor: default;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 90%);
         bottom: 0;
         left: 0;
         position: absolute;
@@ -321,6 +318,7 @@
         padding: 0.7em 0;
         width: 100%;
         text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 1);
+        cursor: default;
 
         .copyright {
             p {

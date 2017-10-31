@@ -68,21 +68,21 @@
 @mixin flexgrid-base($vertical-align: null, $horizontal-align: null) {
 
     // Grid.
-        @include vendor('display', 'flex');
-        @include vendor('flex-wrap', 'wrap');
+        display: flex;
+        flex-wrap: wrap;
 
         // Vertical alignment.
             @if ($vertical-align == top) {
-                @include vendor('align-items', 'flex-start');
+                align-items: flex-start;
             }
             @else if ($vertical-align == bottom) {
-                @include vendor('align-items', 'flex-end');
+                align-items: flex-end;
             }
             @else if ($vertical-align == center) {
-                @include vendor('align-items', 'center');
+                align-items: center;
             }
             @else {
-                @include vendor('align-items', 'stretch');
+                align-items: stretch;
             }
 
         // Horizontal alignment.
@@ -92,8 +92,8 @@
 
     // Cells.
         > * {
-            @include vendor('flex-shrink', '1');
-            @include vendor('flex-grow', '0');
+            flex-shrink: 1;
+            flex-grow: 0;
         }
 
 }

@@ -1,5 +1,6 @@
 import { dest, parallel, series, src } from 'gulp';
 
+import autoprefixer from 'gulp-autoprefixer';
 import babel from 'gulp-babel';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
@@ -61,7 +62,8 @@ function buildStylesTask() {
         .pipe(plumber())
         .pipe(sass().on('error', logPluginError))
         .pipe(plumber.stop())
-        .pipe(gulpif(environment.isProduction, cssnano()))
+        .pipe(gulpif(environment.isProduction, autoprefixer()))
+        .pipe(gulpif(environment.isProduction, cssnano({ autoprefixer: false })))
         .pipe(dest('./dist/assets/css'));
 }
 
