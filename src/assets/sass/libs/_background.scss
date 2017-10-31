@@ -6,11 +6,11 @@
     https://unsplash.com/photos/g30P1zcOzXo
 */
 
-@mixin background($size) {
-    #background {
-        background-image: url('../images/background-#{$size}.jpg');
+    @mixin background($size) {
+        #background {
+            background-image: url('../images/background-#{$size}.jpg');
+        }
     }
-}
 
 /* Background */
 
