@@ -58,12 +58,16 @@ function watchStylesTask() {
  * all CSS files will be minified and optimized.
  */
 function buildStylesTask() {
+    const cssnanoOptions = {
+        autoprefixer: false
+    };
+
     return src('./src/assets/sass/**/*.scss')
         .pipe(plumber())
         .pipe(sass().on('error', logPluginError))
         .pipe(plumber.stop())
         .pipe(gulpif(environment.isProduction, autoprefixer()))
-        .pipe(gulpif(environment.isProduction, cssnano({ autoprefixer: false })))
+        .pipe(gulpif(environment.isProduction, cssnano(cssnanoOptions)))
         .pipe(dest('./dist/assets/css'));
 }
 
@@ -106,9 +110,13 @@ function watchTemplateTask() {
  * all HTML will be minified and server-side includes will be parsed.
  */
 function buildTemplateTask() {
+    const ssiOptions = {
+        root: './'
+    };
+
     return merge2(
         src('./src/index.html')
-            .pipe(gulpif(environment.isProduction, ssi({ root: './' })))
+            .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
             .pipe(gulpif(environment.isProduction, htmlmin({
                 collapseBooleanAttributes: true,
                 collapseWhitespace: true,
