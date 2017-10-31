@@ -78,7 +78,7 @@ function buildStylesTask() {
         .pipe(gulpif(environment.isProduction, rev()))
         .pipe(dest('./dist/assets/css'))
         .pipe(gulpif(environment.isProduction, rev.manifest(revOptions.cssManifest)))
-        .pipe(dest('./.tmp'));
+        .pipe(gulpif(environment.isProduction, dest('./.tmp')));
 }
 
 /**
@@ -103,7 +103,7 @@ function buildScriptsTask() {
         .pipe(gulpif(environment.isProduction, rev()))
         .pipe(dest('./dist/assets/scripts'))
         .pipe(gulpif(environment.isProduction, rev.manifest(revOptions.jsManifest)))
-        .pipe(dest('./.tmp'));
+        .pipe(gulpif(environment.isProduction, dest('./.tmp')));
 }
 
 /**
@@ -126,11 +126,11 @@ function buildTemplateTask() {
     };
 
     const cssRevReplaceOptions = {
-        manifest: src(`./.tmp/${revOptions.cssManifest}`)
+        manifest: environment.isProduction ? src(`./.tmp/${revOptions.cssManifest}`) : util.noop
     };
 
     const jsRevReplaceOptions = {
-        manifest: src(`./.tmp/${revOptions.jsManifest}`)
+        manifest: environment.isProduction ? src(`./.tmp/${revOptions.jsManifest}`) : util.noop
     };
 
     return merge2(
