@@ -9,6 +9,8 @@ import gulpif from 'gulp-if';
 import htmlmin from 'gulp-htmlmin';
 import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
+import rev from 'gulp-rev';
+import revReplace from 'gulp-rev-replace';
 import sass from 'gulp-sass';
 import ssi from 'gulp-ssi';
 import uglify from 'gulp-uglify';
@@ -17,6 +19,11 @@ import watch from 'gulp-watch';
 
 const environment = envalid.cleanEnv(process.env);
 const browserSyncInstance = browserSync.create();
+
+const revOptions = {
+    cssManifest: 'rev-manifest-styles.json',
+    jsManifest: 'rev-manifest-js.json'
+};
 
 /**
  * Auxiliary function to log a plugin error with color support and a formatted message.
@@ -68,7 +75,10 @@ function buildStylesTask() {
         .pipe(plumber.stop())
         .pipe(gulpif(environment.isProduction, autoprefixer()))
         .pipe(gulpif(environment.isProduction, cssnano(cssnanoOptions)))
-        .pipe(dest('./dist/assets/css'));
+        .pipe(gulpif(environment.isProduction, rev()))
+        .pipe(dest('./dist/assets/css'))
+        .pipe(gulpif(environment.isProduction, rev.manifest(revOptions.cssManifest)))
+        .pipe(dest('./.tmp'));
 }
 
 /**
@@ -87,12 +97,13 @@ function watchScriptsTask() {
  * all JS filles will be uglified.
  */
 function buildScriptsTask() {
-    return merge2(
-        src(['./src/assets/scripts/**/*.js', '!**/*.min.js'])
-            .pipe(babel())
-            .pipe(gulpif(environment.isProduction, uglify())),
-        src('./src/assets/scripts/**/*.min.js')
-    ).pipe(dest('./dist/assets/scripts'));
+    return src('./src/assets/scripts/**/*.js')
+        .pipe(babel())
+        .pipe(gulpif(environment.isProduction, uglify()))
+        .pipe(gulpif(environment.isProduction, rev()))
+        .pipe(dest('./dist/assets/scripts'))
+        .pipe(gulpif(environment.isProduction, rev.manifest(revOptions.jsManifest)))
+        .pipe(dest('./.tmp'));
 }
 
 /**
@@ -114,8 +125,18 @@ function buildTemplateTask() {
         root: './'
     };
 
+    const cssRevReplaceOptions = {
+        manifest: src(`./.tmp/${revOptions.cssManifest}`)
+    };
+
+    const jsRevReplaceOptions = {
+        manifest: src(`./.tmp/${revOptions.jsManifest}`)
+    };
+
     return merge2(
         src('./src/index.html')
+            .pipe(gulpif(environment.isProduction, revReplace(cssRevReplaceOptions)))
+            .pipe(gulpif(environment.isProduction, revReplace(jsRevReplaceOptions)))
             .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
             .pipe(gulpif(environment.isProduction, htmlmin({
                 collapseBooleanAttributes: true,
@@ -138,7 +159,7 @@ function buildTemplateTask() {
  * @export `development` task.
  */
 export const development = series(
-    parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
+    series(parallel(buildStylesTask, buildScriptsTask), buildTemplateTask),
     parallel(watchStylesTask, watchScriptsTask, watchTemplateTask, initializeBrowserSync)
 );
 
@@ -147,4 +168,4 @@ export const development = series(
  *
  * @export `production` task.
  */
-export const production = parallel(buildStylesTask, buildScriptsTask, buildTemplateTask);
+export const production = series(parallel(buildStylesTask, buildScriptsTask), buildTemplateTask);
