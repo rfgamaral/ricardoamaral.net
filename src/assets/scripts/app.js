@@ -52,21 +52,19 @@
         });
     }
 
-    window.onload = function () {
+    window.onload = () => {
         document.body.className = '';
         initTwinklingStars();
     }
 
-    window.onresize = function () {
+    window.onresize = () => {
         clearTimeout(window.onResizeEnd);
         window.onResizeEnd = setTimeout(initTwinklingStars, 250);
     }
 
-    window.ontouchmove = function () {
-        return false;
-    }
+    window.ontouchmove = () => false;
 
-    window.onorientationchange = function () {
+    window.onorientationchange = () => {
         document.body.scrollTop = 0;
-    }
+    };
 }());
