@@ -1,10 +1,8 @@
-@import 'libs/background';
-@import 'libs/fontello';
 @import 'libs/functions';
-@import 'libs/include-media';
 @import 'libs/mixins';
 @import 'libs/skel';
 @import 'libs/vars';
+@import 'vendor/include-media';
 
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900');
 
@@ -65,7 +63,13 @@
         }
     }
 
+/* Background */
+
+    @import 'partials/background';
+
 /* Icon */
+
+    @import 'partials/fontello';
 
     .icon {
         @include icon;

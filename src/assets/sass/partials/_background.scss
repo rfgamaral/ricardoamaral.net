@@ -1,5 +1,5 @@
-@import 'libs/include-media';
-@import 'libs/vars';
+@import '../libs/vars';
+@import '../vendor/include-media';
 
 /*!
     Photo by Daniel Leone on Unsplash
@@ -28,7 +28,7 @@
 
     @include background('1920w');
 
-/*Extra Large Devices */
+/* Extra Large Devices */
 
     @include media('>large', '<=xlarge') {
         @include background('1680w');
