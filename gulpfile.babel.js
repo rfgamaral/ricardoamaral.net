@@ -9,8 +9,8 @@ import gulpif from 'gulp-if';
 import htmlmin from 'gulp-htmlmin';
 import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
-import rev from 'gulp-rev';
-import revReplace from 'gulp-rev-replace';
+import revAll from 'gulp-rev-all';
+import revDeleteOriginal from 'gulp-rev-delete-original';
 import sass from 'gulp-sass';
 import ssi from 'gulp-ssi';
 import uglify from 'gulp-uglify';
@@ -19,11 +19,6 @@ import watch from 'gulp-watch';
 
 const environment = envalid.cleanEnv(process.env);
 const browserSyncInstance = browserSync.create();
-
-const revOptions = {
-    cssManifest: 'rev-manifest-styles.json',
-    jsManifest: 'rev-manifest-js.json'
-};
 
 /**
  * Auxiliary function to log a plugin error with color support and a formatted message.
@@ -75,10 +70,7 @@ function buildStylesTask() {
         .pipe(plumber.stop())
         .pipe(gulpif(environment.isProduction, autoprefixer()))
         .pipe(gulpif(environment.isProduction, cssnano(cssnanoOptions)))
-        .pipe(gulpif(environment.isProduction, rev()))
-        .pipe(dest('./dist/assets/css'))
-        .pipe(gulpif(environment.isProduction, rev.manifest(revOptions.cssManifest)))
-        .pipe(gulpif(environment.isProduction, dest('./.tmp')));
+        .pipe(dest('./dist/assets/css'));
 }
 
 /**
@@ -100,10 +92,7 @@ function buildScriptsTask() {
     return src('./src/assets/scripts/**/*.js')
         .pipe(babel())
         .pipe(gulpif(environment.isProduction, uglify()))
-        .pipe(gulpif(environment.isProduction, rev()))
-        .pipe(dest('./dist/assets/scripts'))
-        .pipe(gulpif(environment.isProduction, rev.manifest(revOptions.jsManifest)))
-        .pipe(gulpif(environment.isProduction, dest('./.tmp')));
+        .pipe(dest('./dist/assets/scripts'));
 }
 
 /**
@@ -125,18 +114,8 @@ function buildTemplateTask() {
         root: './'
     };
 
-    const cssRevReplaceOptions = {
-        manifest: environment.isProduction ? src(`./.tmp/${revOptions.cssManifest}`) : util.noop
-    };
-
-    const jsRevReplaceOptions = {
-        manifest: environment.isProduction ? src(`./.tmp/${revOptions.jsManifest}`) : util.noop
-    };
-
     return merge2(
         src('./src/index.html')
-            .pipe(gulpif(environment.isProduction, revReplace(cssRevReplaceOptions)))
-            .pipe(gulpif(environment.isProduction, revReplace(jsRevReplaceOptions)))
             .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
             .pipe(gulpif(environment.isProduction, htmlmin({
                 collapseBooleanAttributes: true,
@@ -153,13 +132,36 @@ function buildTemplateTask() {
 }
 
 /**
+ * Perform static asset revisioning - with dependency considerations - by appending content hash to
+ * filenames (eg. unicorn.css => unicorn.098f6bcd.css).
+ */
+function revStaticAssetsTask() {
+    const revAllOptions = {
+        dontGlobal: [
+            /^\/favicon.ico$/g
+        ],
+        dontRenameFile: [
+            'CNAME',
+            'index.html'
+        ],
+        transformPath: (rev, source, path) =>
+            rev.includes('open-graph-preview') ? `https://ricardoamaral.net/${rev}` : rev
+    };
+
+    return src('./dist/**/*')
+        .pipe(revAll.revision(revAllOptions))
+        .pipe(revDeleteOriginal())
+        .pipe(dest('./dist'));
+}
+
+/**
  * Compile source files and launch a Browsersync development server. Changes made will either be
  * injected into the page or will cause all browsers to do a full-page refresh.
  *
  * @export `development` task.
  */
 export const development = series(
-    series(parallel(buildStylesTask, buildScriptsTask), buildTemplateTask),
+    parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
     parallel(watchStylesTask, watchScriptsTask, watchTemplateTask, initializeBrowserSync)
 );
 
@@ -168,4 +170,7 @@ export const development = series(
  *
  * @export `production` task.
  */
-export const production = series(parallel(buildStylesTask, buildScriptsTask), buildTemplateTask);
+export const production = series(
+    parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
+    revStaticAssetsTask
+);

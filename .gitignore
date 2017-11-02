@@ -1,5 +1,4 @@
 # Build: Dependencies and output files
-.tmp/
 dist/
 node_modules/
 
