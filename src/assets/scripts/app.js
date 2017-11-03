@@ -58,6 +58,13 @@
 
     window.onload = () => {
         document.body.className = '';
+
+        WebFont.load({
+            google: {
+                families: ['Source Sans Pro:300,900']
+            }
+        });
+
         initTwinklingStars();
     }
 
