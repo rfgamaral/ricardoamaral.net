@@ -1,4 +1,4 @@
-(function () {
+(function (document, window) {
     // Private auxiliary functions
 
     function initTwinklingStars() {
@@ -78,4 +78,4 @@
     window.onorientationchange = () => {
         document.body.scrollTop = 0;
     };
-}());
+}(document, window));
