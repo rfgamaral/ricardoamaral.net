@@ -1,9 +1,24 @@
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108806299-1"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    if (navigator.userAgent.indexOf('Google Page Speed Insights') === -1) {
+        var TRACKING_ID = 'UA-108806299-1';
 
-    gtag('config', 'UA-108806299-1');
+        var gtagElement = document.createElement('script');
+
+        gtagElement.async = true;
+        gtagElement.src = 'https://www.googletagmanager.com/gtag/js?id=' + TRACKING_ID;
+
+        var scriptElements = document.getElementsByTagName('script');
+        var lastScriptElement = scriptElements[scriptElements.length - 1];
+
+        lastScriptElement.parentNode.insertBefore(gtagElement, lastScriptElement.nextSibling);
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', TRACKING_ID);
+    }
 </script>
