@@ -1,4 +1,6 @@
 (function () {
+    // Private auxiliary functions
+
     function initTwinklingStars() {
         const devicePixelRatio = Math.min(window.devicePixelRatio, 3) || 1;
 
@@ -51,6 +53,8 @@
             retina_detect: true
         });
     }
+
+    // Event handlers for varius Window events
 
     window.onload = () => {
         document.body.className = '';
