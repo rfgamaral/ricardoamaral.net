@@ -9,7 +9,6 @@ If you wish to fork this repository, please remove all private information regar
 - HTML5 & CSS3 [Aerial](https://html5up.net/aerial) template from [HTML5 UP](https://html5up.net/).
 - Background photo by [Daniel Leone](https://unsplash.com/photos/g30P1zcOzXo) on [Unsplash](https://unsplash.com/).
 - JavaScript library [particles.js](https://vincentgarreau.com/particles.js/) for creating particles.
-- Image compression by [Mozilla JPEG Encoder](https://mozjpeg.codelove.de/).
 - Favicon generator by [Favic-o-meter](http://www.favicomatic.com/).
 
 ## License
