@@ -46,37 +46,37 @@
 
 /* Medium Devices */
 
-    @include media('height>small', '<=medium', 'portrait') {
+    @include media('height>small', 'height<=medium', 'portrait') {
         @include background('1280h');
     }
 
-    @include media('height>small', '<=medium', 'portrait', 'retina2x') {
+    @include media('height>small', 'height<=medium', 'portrait', 'retina2x') {
         @include background('1280h@2x');
     }
 
-    @include media('width>small', '<=medium', 'landscape') {
+    @include media('width>small', 'width<=medium', 'landscape') {
         @include background('1280w');
     }
 
-    @include media('width>small', '<=medium', 'landscape', 'retina2x') {
+    @include media('width>small', 'width<=medium', 'landscape', 'retina2x') {
         @include background('1280w@2x');
     }
 
 /* Small Devices */
 
-    @include media('height>xsmall', '<=small', 'portrait') {
+    @include media('height>xsmall', 'height<=small', 'portrait') {
         @include background('736h');
     }
 
-    @include media('height>xsmall', '<=small', 'portrait', 'retina2x') {
+    @include media('height>xsmall', 'height<=small', 'portrait', 'retina2x') {
         @include background('736h@2x');
     }
 
-    @include media('width>xsmall', '<=small', 'landscape') {
+    @include media('width>xsmall', 'width<=small', 'landscape') {
         @include background('736w');
     }
 
-     @include media('width>xsmall', '<=small', 'landscape', 'retina2x') {
+     @include media('width>xsmall', 'width<=small', 'landscape', 'retina2x') {
         @include background('736w@2x');
     }
 
