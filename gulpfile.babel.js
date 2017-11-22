@@ -142,10 +142,9 @@ function revStaticAssetsTask() {
         ],
         dontRenameFile: [
             'CNAME',
-            'index.html'
-        ],
-        transformPath: (rev, source, path) =>
-            rev.includes('open-graph-preview') ? `https://ricardoamaral.net/${rev}` : rev
+            'index.html',
+            'open-graph-preview.png'
+        ]
     };
 
     return src('./dist/**/*')
