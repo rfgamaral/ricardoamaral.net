@@ -16,7 +16,9 @@
             }
 
             gtag('js', new Date());
-            gtag('config', trackingId);
+            gtag('config', trackingId, {
+                'anonymize_ip': true
+            });
         }
     }(document, 'UA-108806299-1'));
 </script>
