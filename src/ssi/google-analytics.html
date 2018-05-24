@@ -2,11 +2,10 @@
     (function (document, trackingId) {
         if (navigator.userAgent.indexOf('Google Page Speed Insights') === -1) {
             var gtagElement = document.createElement('script');
+            var firstScriptElement = document.scripts[0];
 
             gtagElement.src = 'https://www.googletagmanager.com/gtag/js?id=' + trackingId;
             gtagElement.async = true;
-
-            var firstScriptElement = document.scripts[0];
 
             firstScriptElement.parentNode.insertBefore(gtagElement, firstScriptElement);
 
