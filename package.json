@@ -10,9 +10,9 @@
   "private": true,
   "scripts": {
     "build": "npm-run-all clean gulp:production",
-    "cf-purge": "cfcli --config config/cloudflare.yml purge",
     "clean": "npm-run-all --parallel clean:*",
     "clean:dist": "rimraf dist/",
+    "cloudflare:purge": "cfcli --config config/cloudflare.yml purge",
     "deploy": "npm-run-all build gh-pages cf-purge",
     "gh-pages": "gh-pages --dist dist/ --message \"Deploy new website build to GitHub\"",
     "gulp:development": "cross-env NODE_ENV=development gulp development",
