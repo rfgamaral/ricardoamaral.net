@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/rfgamaral
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://ricardoamaral.net
+  * I am rfgamaral (https://keybase.io/rfgamaral) on keybase.
+  * I have a public key ASDysXCNXHms9gyeFlWXrg-xI1tqNSFtpa0tJmQSR7IXVwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f2b1708d5c79acf60c9e165597ae0fb1235b6a35216da5ad2d26641247b217570a",
+      "host": "keybase.io",
+      "kid": "0120f2b1708d5c79acf60c9e165597ae0fb1235b6a35216da5ad2d26641247b217570a",
+      "uid": "beb53cace2e9af51f855f77168e5d519",
+      "username": "rfgamaral"
+    },
+    "merkle_root": {
+      "ctime": 1530435250,
+      "hash": "ef6a3f9e532e0e3d113ee43550221958b285001d80d02dbc53fddca0917043ca3a670cd252f5b6525d52152e49525441e987a68bfa395e15324ceaab7dbd49d3",
+      "hash_meta": "4a1f91024d6c4eb8056f07fd42d4c9b32bfdc7b35f4e13fbbd9cb7036927db1e",
+      "seqno": 3181970
+    },
+    "service": {
+      "entropy": "s18GQdBPWqemKYHR6uXqrrMM",
+      "hostname": "ricardoamaral.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.1.2"
+  },
+  "ctime": 1530435266,
+  "expire_in": 504576000,
+  "prev": "59965446b2bc5b3e223497af1e1250dff6e52c47c84c9ac60edecf8bfe08b1dc",
+  "seqno": 110,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg8rFwjVx5rPYMnhZVl64PsSNbajUhbaWtLSZkEkeyF1cKp3BheWxvYWTESpcCbsQgWZZURrK8Wz4iNJevHhJQ3/blLEfITJrGDt7Pi/4IsdzEIJqpPyBiVhFxnhyCK3ZyxuPZBlgVyEjxq2RiFQzLbVroAgHCo3NpZ8RAsWUSLuJvvhNtR4/KRjRkI5OOsjnGcsedO8bVLoEva2SDZ9zjUCR7XSsrB2cegEJRnAnoGgFc5rRfrAWdQ/gzDKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIOb6rAWoHremmOYjsPLj1kRMYuyslP1pSKbK+IJ9dGxjo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rfgamaral
+
+==================================================================

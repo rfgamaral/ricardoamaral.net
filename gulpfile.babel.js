@@ -127,7 +127,10 @@ function buildTemplateTask() {
                 removeOptionalTags: true,
                 removeRedundantAttributes: true
             }))),
-        src('./src/**/!(*.html|*.js|*.scss)', { nodir: true })
+        src('./src/**/!(*.html|*.js|*.scss)', {
+            nodir: true,
+            dot: true
+        })
     ).pipe(dest('./dist'));
 }
 
