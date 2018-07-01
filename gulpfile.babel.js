@@ -143,6 +143,7 @@ function revStaticAssetsTask() {
         dontRenameFile: [
             'CNAME',
             'index.html',
+            'keybase.txt',
             'open-graph-preview.png'
         ]
     };
