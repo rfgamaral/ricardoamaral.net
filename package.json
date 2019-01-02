@@ -35,7 +35,7 @@
     "cross-env": "5.2.0",
     "envalid": "4.1.4",
     "gh-pages": "1.2.0",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "4.0.0",
     "gulp-autoprefixer": "5.0.0",
     "gulp-babel": "7.0.1",
     "gulp-cli": "2.0.1",
