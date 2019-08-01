@@ -54,7 +54,7 @@
         });
     }
 
-    // Event handlers for varius Window events
+    // Event handlers for various Window events
 
     window.onload = () => {
         document.body.className = '';
