@@ -1,6 +1,10 @@
 (function (document, window) {
     // Private auxiliary functions
 
+    function initCopyrightCurrentYear() {
+        document.getElementById('current-year').innerHTML = new Date().getFullYear();
+    }
+
     function initTwinklingStars() {
         const devicePixelRatio = Math.min(window.devicePixelRatio, 3) || 1;
 
@@ -58,6 +62,7 @@
 
     window.onload = () => {
         document.body.className = '';
+        initCopyrightCurrentYear();
         initTwinklingStars();
     }
 
