@@ -61,7 +61,8 @@
     // Event handlers for various Window events
 
     window.onload = () => {
-        document.body.className = '';
+        document.body.removeAttribute('class');
+
         initCopyrightCurrentYear();
         initTwinklingStars();
     }
