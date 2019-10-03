@@ -141,7 +141,6 @@ function revStaticAssetsTask() {
             /^\/favicon.ico$/g
         ],
         dontRenameFile: [
-            'CNAME',
             'index.html',
             'keybase.txt',
             'open-graph-preview.png'
