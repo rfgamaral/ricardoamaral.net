@@ -15,4 +15,4 @@ If you wish to fork this repository, please remove all private information regar
 
 ## License
 
-Use of this source code (excluding the template) is governed by an MIT-style license that can be found in the [LICENSE](LICENSE) file. The Aerial template is licensed under the [Creative Commons Attribution](https://html5up.net/license) license.
+The use of this source code (excluding the template) is governed by an MIT-style license that can be found in the [LICENSE](LICENSE) file. The Aerial template is licensed under the [Creative Commons Attribution](https://html5up.net/license) license.
