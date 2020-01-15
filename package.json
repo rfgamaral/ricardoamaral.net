@@ -9,12 +9,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "npm-run-all clean gulp:production",
-    "clean": "npm-run-all --parallel clean:*",
+    "build": "run-s clean gulp:production",
+    "clean": "run-p clean:*",
     "clean:dist": "rimraf dist/",
     "gulp:development": "cross-env NODE_ENV=development gulp development",
     "gulp:production": "cross-env NODE_ENV=production gulp production",
-    "serve": "npm-run-all clean gulp:development"
+    "serve": "run-s clean gulp:development"
   },
   "devDependencies": {
     "browser-sync": "2.26.7",
