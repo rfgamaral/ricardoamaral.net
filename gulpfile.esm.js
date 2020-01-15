@@ -13,20 +13,10 @@ import revDeleteOriginal from "gulp-rev-delete-original";
 import sass from "gulp-sass";
 import ssi from "gulp-ssi";
 import uglify from "gulp-uglify";
-import util from "gulp-util";
 import watch from "gulp-watch";
 
 const environment = envalid.cleanEnv(process.env);
 const browserSyncInstance = browserSync.create();
-
-/**
- * Auxiliary function to log a plugin error with color support and a formatted message.
- *
- * @param {object} event Event information pertaining to an `EventEmitter` event.
- */
-function logPluginError(event) {
-    util.log(new util.PluginError(event.plugin, event.formatted).toString());
-}
 
 /**
  * Launch the Browsersync HTTP server while watching for file changes and refreshing the browser
@@ -48,7 +38,7 @@ function initializeBrowserSync() {
 function watchStylesTask() {
     return watch("./src/assets/sass/**/*.scss")
         .pipe(plumber())
-        .pipe(sass().on("error", logPluginError))
+        .pipe(sass().on("error", sass.logError))
         .pipe(plumber.stop())
         .pipe(dest("./dist/assets/css"))
         .pipe(browserSyncInstance.stream());
@@ -65,7 +55,7 @@ function buildStylesTask() {
 
     return src("./src/assets/sass/**/*.scss")
         .pipe(plumber())
-        .pipe(sass().on("error", logPluginError))
+        .pipe(sass().on("error", sass.logError))
         .pipe(plumber.stop())
         .pipe(gulpif(environment.isProduction, autoprefixer()))
         .pipe(gulpif(environment.isProduction, cssnano(cssnanoOptions)))
