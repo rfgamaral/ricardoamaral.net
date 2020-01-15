@@ -16,9 +16,6 @@
     "gulp:production": "cross-env NODE_ENV=production gulp production",
     "serve": "npm-run-all clean gulp:development"
   },
-  "browserslist": [
-    "last 2 versions"
-  ],
   "devDependencies": {
     "browser-sync": "2.26.7",
     "cross-env": "6.0.3",
