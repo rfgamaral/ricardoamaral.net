@@ -1,6 +1,7 @@
 import { dest, parallel, series, src } from 'gulp';
 
 import autoprefixer from 'gulp-autoprefixer';
+import babel from 'gulp-babel';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
 import envalid from 'envalid';
@@ -68,6 +69,7 @@ function buildStylesTask() {
  */
 function watchScriptsTask() {
     return watch('./src/assets/scripts/**/*.js')
+        .pipe(babel())
         .pipe(dest('./dist/assets/scripts'))
         .pipe(browserSyncInstance.stream());
 }
@@ -78,6 +80,7 @@ function watchScriptsTask() {
  */
 function buildScriptsTask() {
     return src('./src/assets/scripts/**/*.js')
+        .pipe(babel())
         .pipe(gulpif(environment.isProduction, uglify()))
         .pipe(dest('./dist/assets/scripts'));
 }
@@ -104,21 +107,16 @@ function buildTemplateTask() {
     return merge2(
         src('./src/index.html')
             .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
-            .pipe(
-                gulpif(
-                    environment.isProduction,
-                    htmlmin({
-                        collapseBooleanAttributes: true,
-                        collapseWhitespace: true,
-                        minifyCSS: true,
-                        minifyJS: true,
-                        removeComments: true,
-                        removeEmptyAttributes: true,
-                        removeOptionalTags: true,
-                        removeRedundantAttributes: true
-                    })
-                )
-            ),
+            .pipe(gulpif(environment.isProduction, htmlmin({
+                collapseBooleanAttributes: true,
+                collapseWhitespace: true,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: true,
+                removeEmptyAttributes: true,
+                removeOptionalTags: true,
+                removeRedundantAttributes: true
+            }))),
         src('./src/**/!(*.html|*.js|*.scss)', { nodir: true })
     ).pipe(dest('./dist'));
 }
@@ -129,8 +127,14 @@ function buildTemplateTask() {
  */
 function revStaticAssetsTask() {
     const revAllOptions = {
-        dontGlobal: [/^\/favicon.ico$/g],
-        dontRenameFile: ['index.html', 'keybase.txt', 'open-graph-preview.png']
+        dontGlobal: [
+            /^\/favicon.ico$/g
+        ],
+        dontRenameFile: [
+            'index.html',
+            'keybase.txt',
+            'open-graph-preview.png'
+        ]
     };
 
     return src('./dist/**/*')
@@ -147,12 +151,7 @@ function revStaticAssetsTask() {
  */
 export const development = series(
     parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
-    parallel(
-        watchStylesTask,
-        watchScriptsTask,
-        watchTemplateTask,
-        initializeBrowserSync
-    )
+    parallel(watchStylesTask, watchScriptsTask, watchTemplateTask, initializeBrowserSync)
 );
 
 /**
