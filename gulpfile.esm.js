@@ -1,19 +1,19 @@
-import { dest, parallel, series, src } from "gulp";
+import { dest, parallel, series, src } from 'gulp';
 
-import autoprefixer from "gulp-autoprefixer";
-import browserSync from "browser-sync";
-import cssnano from "gulp-cssnano";
-import envalid from "envalid";
-import gulpif from "gulp-if";
-import htmlmin from "gulp-htmlmin";
-import merge2 from "merge2";
-import plumber from "gulp-plumber";
-import revAll from "gulp-rev-all";
-import revDeleteOriginal from "gulp-rev-delete-original";
-import sass from "gulp-sass";
-import ssi from "gulp-ssi";
-import uglify from "gulp-uglify";
-import watch from "gulp-watch";
+import autoprefixer from 'gulp-autoprefixer';
+import browserSync from 'browser-sync';
+import cssnano from 'gulp-cssnano';
+import envalid from 'envalid';
+import gulpif from 'gulp-if';
+import htmlmin from 'gulp-htmlmin';
+import merge2 from 'merge2';
+import plumber from 'gulp-plumber';
+import revAll from 'gulp-rev-all';
+import revDeleteOriginal from 'gulp-rev-delete-original';
+import sass from 'gulp-sass';
+import ssi from 'gulp-ssi';
+import uglify from 'gulp-uglify';
+import watch from 'gulp-watch';
 
 const environment = envalid.cleanEnv(process.env);
 const browserSyncInstance = browserSync.create();
@@ -24,8 +24,8 @@ const browserSyncInstance = browserSync.create();
  */
 function initializeBrowserSync() {
     browserSyncInstance.init({
-        files: "./dist/**/*",
-        server: "./dist",
+        files: './dist/**/*',
+        server: './dist',
         online: false,
         open: false
     });
@@ -36,11 +36,11 @@ function initializeBrowserSync() {
  * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchStylesTask() {
-    return watch("./src/assets/sass/**/*.scss")
+    return watch('./src/assets/sass/**/*.scss')
         .pipe(plumber())
-        .pipe(sass().on("error", sass.logError))
+        .pipe(sass().on('error', sass.logError))
         .pipe(plumber.stop())
-        .pipe(dest("./dist/assets/css"))
+        .pipe(dest('./dist/assets/css'))
         .pipe(browserSyncInstance.stream());
 }
 
@@ -53,13 +53,13 @@ function buildStylesTask() {
         autoprefixer: false
     };
 
-    return src("./src/assets/sass/**/*.scss")
+    return src('./src/assets/sass/**/*.scss')
         .pipe(plumber())
-        .pipe(sass().on("error", sass.logError))
+        .pipe(sass().on('error', sass.logError))
         .pipe(plumber.stop())
         .pipe(gulpif(environment.isProduction, autoprefixer()))
         .pipe(gulpif(environment.isProduction, cssnano(cssnanoOptions)))
-        .pipe(dest("./dist/assets/css"));
+        .pipe(dest('./dist/assets/css'));
 }
 
 /**
@@ -67,8 +67,8 @@ function buildStylesTask() {
  * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchScriptsTask() {
-    return watch("./src/assets/scripts/**/*.js")
-        .pipe(dest("./dist/assets/scripts"))
+    return watch('./src/assets/scripts/**/*.js')
+        .pipe(dest('./dist/assets/scripts'))
         .pipe(browserSyncInstance.stream());
 }
 
@@ -77,9 +77,9 @@ function watchScriptsTask() {
  * all JS filles will be uglified.
  */
 function buildScriptsTask() {
-    return src("./src/assets/scripts/**/*.js")
+    return src('./src/assets/scripts/**/*.js')
         .pipe(gulpif(environment.isProduction, uglify()))
-        .pipe(dest("./dist/assets/scripts"));
+        .pipe(dest('./dist/assets/scripts'));
 }
 
 /**
@@ -87,8 +87,8 @@ function buildScriptsTask() {
  * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchTemplateTask() {
-    return watch("./src/**/!(*.js|*.scss)")
-        .pipe(dest("./dist"))
+    return watch('./src/**/!(*.js|*.scss)')
+        .pipe(dest('./dist'))
         .pipe(browserSyncInstance.stream());
 }
 
@@ -98,11 +98,11 @@ function watchTemplateTask() {
  */
 function buildTemplateTask() {
     const ssiOptions = {
-        root: "./"
+        root: './'
     };
 
     return merge2(
-        src("./src/index.html")
+        src('./src/index.html')
             .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
             .pipe(
                 gulpif(
@@ -119,8 +119,8 @@ function buildTemplateTask() {
                     })
                 )
             ),
-        src("./src/**/!(*.html|*.js|*.scss)", { nodir: true })
-    ).pipe(dest("./dist"));
+        src('./src/**/!(*.html|*.js|*.scss)', { nodir: true })
+    ).pipe(dest('./dist'));
 }
 
 /**
@@ -130,13 +130,13 @@ function buildTemplateTask() {
 function revStaticAssetsTask() {
     const revAllOptions = {
         dontGlobal: [/^\/favicon.ico$/g],
-        dontRenameFile: ["index.html", "keybase.txt", "open-graph-preview.png"]
+        dontRenameFile: ['index.html', 'keybase.txt', 'open-graph-preview.png']
     };
 
-    return src("./dist/**/*")
+    return src('./dist/**/*')
         .pipe(revAll.revision(revAllOptions))
         .pipe(revDeleteOriginal())
-        .pipe(dest("./dist"));
+        .pipe(dest('./dist'));
 }
 
 /**
