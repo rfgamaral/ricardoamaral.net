@@ -9,8 +9,8 @@
     Feature-Policy = "vibrate 'none'; geolocation 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'none'; microphone 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'; fullscreen 'none'; payment 'none'"
 
 [[redirects]]
-  from = "https://rfgamaral-personal-website.netlify.com/*"
-  to = "https://ricardoamaral.net/:splat"
+  from = "https://rfgamaral-personal-website.netlify.com"
+  to = "https://ricardoamaral.net"
   status = 301
 
 [[redirects]]
