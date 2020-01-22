@@ -1,4 +1,4 @@
-(function (document, window) {
+(function(document, window) {
     // Private auxiliary functions
 
     function initCopyrightCurrentYear() {
@@ -14,14 +14,14 @@
                     value: 300,
                     density: {
                         enable: true,
-                        value_area: 600
-                    }
+                        value_area: 600,
+                    },
                 },
                 color: {
-                    value: '#ffffff'
+                    value: '#ffffff',
                 },
                 shape: {
-                    type: 'circle'
+                    type: 'circle',
                 },
                 opacity: {
                     value: 1,
@@ -29,8 +29,8 @@
                     anim: {
                         enable: true,
                         speed: 3,
-                        opacity_min: 0
-                    }
+                        opacity_min: 0,
+                    },
                 },
                 size: {
                     value: 1.5 / devicePixelRatio,
@@ -39,11 +39,11 @@
                         enable: true,
                         speed: 1,
                         size_min: 0.5 / devicePixelRatio,
-                        sync: false
-                    }
+                        sync: false,
+                    },
                 },
                 line_linked: {
-                    enable: false
+                    enable: false,
                 },
                 move: {
                     enable: true,
@@ -51,10 +51,10 @@
                     direction: 'none',
                     random: true,
                     straight: true,
-                    out_mode: 'bounce'
-                }
+                    out_mode: 'bounce',
+                },
             },
-            retina_detect: true
+            retina_detect: true,
         });
     }
 
@@ -65,16 +65,16 @@
 
         initCopyrightCurrentYear();
         initTwinklingStars();
-    }
+    };
 
     window.onresize = () => {
         clearTimeout(window.onResizeEnd);
         window.onResizeEnd = setTimeout(initTwinklingStars, 250);
-    }
+    };
 
     window.ontouchmove = () => false;
 
     window.onorientationchange = () => {
         document.body.scrollTop = 0;
     };
-}(document, window));
+})(document, window);

@@ -1,43 +1,45 @@
 // Breakpoints.
-    $breakpoints: (
-        xlarge: 1680px,
-        large: 1440px,
-        medium: 1280px,
-        small: 736px,
-        xsmall: 480px
-    );
+$breakpoints: (
+    xlarge: 1680px,
+    large: 1440px,
+    medium: 1280px,
+    small: 736px,
+    xsmall: 480px,
+);
 
 // Duration.
-    $duration: (
-        bg: 60s,
-        wrapper: 1s,
-        overlay: 1.5s,
-        header: 1s,
-        nav-icons: 0.3s
-    );
+$duration: (
+    bg: 60s,
+    wrapper: 1s,
+    overlay: 1.5s,
+    header: 1s,
+    nav-icons: 0.3s,
+);
 
 // Size.
-    $size: (
-        avatar: 9em,
-        nav-icon-wrapper: 5.35em,
-        nav-icon: 1.75em
-    );
+$size: (
+    avatar: 9em,
+    nav-icon-wrapper: 5.35em,
+    nav-icon: 1.75em,
+);
 
 // Font.
-    $font: (
-        primary: ('Source Sans Pro', sans-serif),
-        nav-icon: 'Fontello Icons'
-    );
+$font: (
+    primary: (
+        'Source Sans Pro',
+        sans-serif,
+    ),
+    nav-icon: 'Fontello Icons',
+);
 
 // Palette.
-    $palette: (
-        bg: #fff,
-        fg: #fff,
-
-        nav-icon: (
-            hover-bg: rgba(255,255,255,0.175),
-            hover-fg: #fff,
-            active-bg: rgba(255,255,255,0.35),
-            active-fg: #fff
-        )
-    );
+$palette: (
+    bg: #fff,
+    fg: #fff,
+    nav-icon: (
+        hover-bg: rgba(255, 255, 255, 0.175),
+        hover-fg: #fff,
+        active-bg: rgba(255, 255, 255, 0.35),
+        active-fg: #fff,
+    ),
+);

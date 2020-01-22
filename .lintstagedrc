@@ -1,0 +1,11 @@
+{
+  "./src/**/*": [
+    "prettier --write"
+  ],
+  "./gulpfile.esm.js": [
+    "prettier --write"
+  ],
+  "./.*rc": [
+    "prettier --write"
+  ]
+}

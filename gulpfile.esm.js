@@ -28,7 +28,7 @@ function initializeBrowserSync() {
         files: './dist/**/*',
         server: './dist',
         online: false,
-        open: false
+        open: false,
     });
 }
 
@@ -51,7 +51,7 @@ function watchStylesTask() {
  */
 function buildStylesTask() {
     const cssnanoOptions = {
-        autoprefixer: false
+        autoprefixer: false,
     };
 
     return src('./src/assets/sass/**/*.scss')
@@ -101,22 +101,27 @@ function watchTemplateTask() {
  */
 function buildTemplateTask() {
     const ssiOptions = {
-        root: './'
+        root: './',
     };
 
     return merge2(
         src('./src/index.html')
             .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
-            .pipe(gulpif(environment.isProduction, htmlmin({
-                collapseBooleanAttributes: true,
-                collapseWhitespace: true,
-                minifyCSS: true,
-                minifyJS: true,
-                removeComments: true,
-                removeEmptyAttributes: true,
-                removeOptionalTags: true,
-                removeRedundantAttributes: true
-            }))),
+            .pipe(
+                gulpif(
+                    environment.isProduction,
+                    htmlmin({
+                        collapseBooleanAttributes: true,
+                        collapseWhitespace: true,
+                        minifyCSS: true,
+                        minifyJS: true,
+                        removeComments: true,
+                        removeEmptyAttributes: true,
+                        removeOptionalTags: true,
+                        removeRedundantAttributes: true,
+                    })
+                )
+            ),
         src('./src/**/!(*.html|*.js|*.scss)', { nodir: true })
     ).pipe(dest('./dist'));
 }
@@ -127,14 +132,8 @@ function buildTemplateTask() {
  */
 function revStaticAssetsTask() {
     const revAllOptions = {
-        dontGlobal: [
-            /^\/favicon.ico$/g
-        ],
-        dontRenameFile: [
-            'index.html',
-            'keybase.txt',
-            'open-graph-preview.png'
-        ]
+        dontGlobal: [/^\/favicon.ico$/g],
+        dontRenameFile: ['index.html', 'keybase.txt', 'open-graph-preview.png'],
     };
 
     return src('./dist/**/*')
@@ -159,7 +158,4 @@ export const development = series(
  *
  * @export `production` task.
  */
-export const production = series(
-    parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
-    revStaticAssetsTask
-);
+export const production = series(parallel(buildStylesTask, buildScriptsTask, buildTemplateTask), revStaticAssetsTask);

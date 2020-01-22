@@ -1,5 +1,5 @@
 <script>
-    (function (document, trackingId) {
+    (function(document, trackingId) {
         if (navigator.userAgent.indexOf('Google Page Speed Insights') === -1) {
             var gtagElement = document.createElement('script');
             var firstScriptElement = document.scripts[0];
@@ -17,8 +17,8 @@
 
             gtag('js', new Date());
             gtag('config', trackingId, {
-                'anonymize_ip': true
+                anonymize_ip: true,
             });
         }
-    }(document, 'UA-108806299-1'));
+    })(document, 'UA-108806299-1');
 </script>
