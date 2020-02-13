@@ -1,8 +1,8 @@
 {
-  "./src/**/*": [
+  "./**/*.js": [
     "prettier --write"
   ],
-  "./gulpfile.esm.js": [
+  "./**/*.{json,yml}": [
     "prettier --write"
   ],
   "./.*rc": [

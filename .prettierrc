@@ -6,19 +6,24 @@
     {
       "files": [
         "*.json",
-        ".babelrc",
-        ".huskyrc",
-        ".lintstagedrc",
-        ".prettierrc"
+        ".*rc"
       ],
       "options": {
         "parser": "json",
         "printWidth": 0,
         "tabWidth": 2
       }
+    },
+    {
+      "files": [
+        "*.yml"
+      ],
+      "options": {
+        "tabWidth": 2
+      }
     }
   ],
-  "printWidth": 120,
+  "printWidth": 100,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
   "semi": true,
