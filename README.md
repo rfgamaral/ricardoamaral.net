@@ -1,8 +1,6 @@
 # ricardoamaral.net
 
-![Netlify Status](https://api.netlify.com/api/v1/badges/510108d4-40ab-4ff5-9ee7-0521a9d05349/deploy-status)
-
-A static personal website based on the [Aerial](https://html5up.net/aerial) theme from [HTML5 UP](https://html5up.net/) deployed to [Netlify](https://www.netlify.com/).
+A static personal website based on the [Aerial](https://html5up.net/aerial) theme from [HTML5 UP](https://html5up.net/) deployed to [ZEIT Now](https://zeit.co/).
 
 If you wish to fork this repository, please remove all private information regarding my persona and take the license section below into consideration.
 
