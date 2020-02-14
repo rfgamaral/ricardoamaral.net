@@ -4,8 +4,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import babel from 'gulp-babel';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
-import envalid from 'envalid';
-import gulpif from 'gulp-if';
+import environments from 'gulp-environments';
 import htmlmin from 'gulp-htmlmin';
 import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
@@ -16,7 +15,15 @@ import ssi from 'gulp-ssi';
 import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
 
-const environment = envalid.cleanEnv(process.env);
+/**
+ * Assign development and production environments to local variables.
+ */
+const isDevelopment = environments.development;
+const isProduction = environments.production;
+
+/**
+ * Create a Browsersync instance for development mode.
+ */
 const browserSyncInstance = browserSync.create();
 
 /**
@@ -58,8 +65,8 @@ function buildStylesTask() {
         .pipe(plumber())
         .pipe(sass().on('error', sass.logError))
         .pipe(plumber.stop())
-        .pipe(gulpif(environment.isProduction, autoprefixer()))
-        .pipe(gulpif(environment.isProduction, cssnano(cssnanoOptions)))
+        .pipe(isProduction(autoprefixer()))
+        .pipe(isProduction(cssnano(cssnanoOptions)))
         .pipe(dest('./dist/assets/css'));
 }
 
@@ -81,7 +88,7 @@ function watchScriptsTask() {
 function buildScriptsTask() {
     return src('./src/assets/scripts/**/*.js')
         .pipe(babel())
-        .pipe(gulpif(environment.isProduction, uglify()))
+        .pipe(isProduction(uglify()))
         .pipe(dest('./dist/assets/scripts'));
 }
 
@@ -106,10 +113,9 @@ function buildTemplateTask() {
 
     return merge2(
         src('./src/index.html')
-            .pipe(gulpif(environment.isProduction, ssi(ssiOptions)))
+            .pipe(isProduction(ssi(ssiOptions)))
             .pipe(
-                gulpif(
-                    environment.isProduction,
+                isProduction(
                     htmlmin({
                         collapseBooleanAttributes: true,
                         collapseWhitespace: true,
@@ -145,17 +151,25 @@ function revStaticAssetsTask() {
 /**
  * Compile source files and launch a Browsersync development server. Changes made will either be
  * injected into the page or will cause all browsers to do a full-page refresh.
- *
- * @export `development` task.
  */
-export const development = series(
-    parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
-    parallel(watchStylesTask, watchScriptsTask, watchTemplateTask, initializeBrowserSync)
-);
+function buildDevelopment() {
+    return series(
+        parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
+        parallel(watchStylesTask, watchScriptsTask, watchTemplateTask, initializeBrowserSync)
+    );
+}
 
 /**
- * Compile source files ready for deployment to GitHub pages.
- *
- * @export `production` task.
+ * Compile source files ready for deployment to a static hosting platform.
  */
-export const production = series(parallel(buildStylesTask, buildScriptsTask, buildTemplateTask), revStaticAssetsTask);
+function buildProduction() {
+    return series(
+        parallel(buildStylesTask, buildScriptsTask, buildTemplateTask),
+        revStaticAssetsTask
+    );
+}
+
+/**
+ * Default build task for both development and production builds.
+ */
+export const build = isDevelopment() ? buildDevelopment() : buildProduction();
