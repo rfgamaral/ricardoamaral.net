@@ -18,6 +18,14 @@
       "source": "/(.*)",
       "headers": [
         {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://ricardoamaral.net"
+        },
+        {
+          "key": "Vary",
+          "value": "Origin"
+        },
+        {
           "key": "Content-Security-Policy",
           "value": "default-src 'none'; img-src 'self'; object-src 'none'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
         },
