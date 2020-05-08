@@ -97,9 +97,7 @@ function buildScriptsTask() {
  * folder, eventually notifying Browsersync of all changes causing a browser reload.
  */
 function watchTemplateTask() {
-    return watch('./src/**/!(*.js|*.scss)')
-        .pipe(dest('./dist'))
-        .pipe(browserSyncInstance.stream());
+    return watch('./src/**/!(*.js|*.scss)').pipe(dest('./dist')).pipe(browserSyncInstance.stream());
 }
 
 /**
@@ -139,7 +137,7 @@ function buildTemplateTask() {
 function revStaticAssetsTask() {
     const revAllOptions = {
         dontGlobal: [/^\/favicon.ico$/g],
-        dontRenameFile: ['index.html', 'keybase.txt', 'open-graph-preview.png'],
+        dontRenameFile: ['index.html', 'open-graph-preview.png'],
     };
 
     return src('./dist/**/*')
