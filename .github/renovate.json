@@ -1,6 +1,9 @@
 {
   "extends": [
     "config:base",
+    ":automergeBranch",
+    ":automergeDigest",
+    ":automergeMinor",
     ":enableVulnerabilityAlertsWithLabel(security)",
     ":label(dependencies)",
     ":masterIssue",
