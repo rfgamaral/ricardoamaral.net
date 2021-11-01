@@ -20,7 +20,7 @@
     "@babel/core": "7.15.8",
     "@babel/preset-env": "7.15.8",
     "@babel/register": "7.15.3",
-    "browser-sync": "2.27.5",
+    "browser-sync": "2.27.7",
     "esm": "3.2.25",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "7.0.1",
