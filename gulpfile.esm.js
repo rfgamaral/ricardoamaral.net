@@ -4,16 +4,19 @@ import autoprefixer from 'gulp-autoprefixer';
 import babel from 'gulp-babel';
 import browserSync from 'browser-sync';
 import cssnano from 'gulp-cssnano';
+import dartSass from 'sass';
 import environments from 'gulp-environments';
 import htmlmin from 'gulp-htmlmin';
 import merge2 from 'merge2';
 import plumber from 'gulp-plumber';
 import revAll from 'gulp-rev-all';
 import revDeleteOriginal from 'gulp-rev-delete-original';
-import sass from 'gulp-sass';
+import gulpSass from 'gulp-sass';
 import ssi from 'gulp-ssi';
 import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
+
+const sass = gulpSass(dartSass);
 
 /**
  * Assign development and production environments to local variables.

@@ -4,7 +4,7 @@
 
 /// Breakpoints.
 /// @var {list}
-$breakpoints: () !global;
+$breakpoints: ();
 
 /// Vendor prefixes.
 /// @var {list}
@@ -111,7 +111,11 @@ $vendor-values: ('filter', 'flex', 'linear-gradient', 'radial-gradient', 'transf
 /// @return {list} Updated list of strings.
 @function str-replace-all($strings, $search, $replace: '') {
     @each $string in $strings {
-        $strings: set-nth($strings, index($strings, $string), str-replace($string, $search, $replace));
+        $strings: set-nth(
+            $strings,
+            index($strings, $string),
+            str-replace($string, $search, $replace)
+        );
     }
 
     @return $strings;
@@ -922,7 +926,7 @@ $vendor-values: ('filter', 'flex', 'linear-gradient', 'radial-gradient', 'transf
     }
 
     // Expand just the value?
-    @elseif $expandValue {
+    @else if $expandValue {
         @each $vendor in $vendor-prefixes {
             #{$property}: #{str-replace-all($value, '-prefix-', $vendor)};
         }
