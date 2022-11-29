@@ -30,7 +30,7 @@
     "gulp-environments": "1.0.1",
     "gulp-htmlmin": "5.0.1",
     "gulp-plumber": "1.2.1",
-    "gulp-rev-all": "2.0.3",
+    "gulp-rev-all": "3.0.0",
     "gulp-rev-delete-original": "0.2.3",
     "gulp-sass": "4.1.1",
     "gulp-ssi": "0.1.5",
