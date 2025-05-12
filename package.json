@@ -17,9 +17,9 @@
     "serve": "run-s clean gulp:development"
   },
   "devDependencies": {
-    "@babel/core": "7.26.10",
-    "@babel/preset-env": "7.26.9",
-    "@babel/register": "7.25.9",
+    "@babel/core": "7.27.1",
+    "@babel/preset-env": "7.27.2",
+    "@babel/register": "7.27.1",
     "browser-sync": "2.29.3",
     "esm": "3.2.25",
     "gulp": "4.0.2",
