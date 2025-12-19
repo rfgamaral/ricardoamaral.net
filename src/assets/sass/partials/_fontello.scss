@@ -8,26 +8,34 @@
     font-style: normal;
 }
 
-.icon-envelope:before {
+.icon-bluesky:before {
     content: '\e800';
 }
 
-.icon-mastodon:before {
+.icon-envelope:before {
     content: '\e801';
 }
 
-.icon-twitter:before {
-    content: '\f099';
-}
-
 .icon-github:before {
-    content: '\f09b';
+    content: '\e802';
 }
 
 .icon-linkedin:before {
-    content: '\f0e1';
+    content: '\e803';
 }
 
-.icon-stackoverflow:before {
-    content: '\f16c';
+.icon-mastodon:before {
+    content: '\e804';
+}
+
+.icon-stack-overflow:before {
+    content: '\e805';
+}
+
+.icon-x:before {
+    content: '\e806';
+}
+
+.icon-youtube:before {
+    content: '\e807';
 }
