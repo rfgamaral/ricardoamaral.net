@@ -1,15 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "use": "@now/static-build",
-      "src": "package.json",
-      "config": {
-        "zeroConfig": true,
-        "outputDirectory": "dist"
-      }
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "github": {
     "silent": true
   },
