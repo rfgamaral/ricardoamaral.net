@@ -130,7 +130,7 @@ function buildTemplateTask() {
                     })
                 )
             ),
-        src('./src/**/!(*.html|*.js|*.scss)', { nodir: true })
+        src('./src/**/!(*.html|*.js|*.scss)', { nodir: true, encoding: false })
     ).pipe(dest('./dist'));
 }
 
@@ -144,7 +144,7 @@ function revStaticAssetsTask() {
         dontRenameFile: ['index.html', 'open-graph-preview.png'],
     };
 
-    return src('./dist/**/*')
+    return src('./dist/**/*', { encoding: false })
         .pipe(revAll.revision(revAllOptions))
         .pipe(revDeleteOriginal())
         .pipe(dest('./dist'));
