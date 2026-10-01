@@ -8,6 +8,9 @@
   },
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "build": "run-s clean gulp:production",
     "clean": "run-p clean:*",
@@ -21,7 +24,6 @@
     "@babel/preset-env": "7.29.7",
     "@babel/register": "7.29.7",
     "browser-sync": "2.29.3",
-    "esm": "3.2.25",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "8.0.0",
     "gulp-babel": "8.1.0",

@@ -1,4 +1,4 @@
-import { dest, parallel, series, src } from 'gulp';
+import gulp from 'gulp';
 
 import autoprefixer from 'gulp-autoprefixer';
 import babel from 'gulp-babel';
@@ -16,6 +16,7 @@ import ssi from 'gulp-ssi';
 import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
 
+const { dest, parallel, series, src } = gulp;
 const sass = gulpSass(dartSass);
 
 /**
