@@ -20,9 +20,9 @@
     "serve": "run-s clean gulp:development"
   },
   "devDependencies": {
-    "@babel/core": "7.29.7",
-    "@babel/preset-env": "7.29.7",
-    "@babel/register": "7.29.7",
+    "@babel/core": "8.0.7",
+    "@babel/preset-env": "8.0.7",
+    "@babel/register": "8.0.6",
     "browser-sync": "2.29.3",
     "gulp": "5.0.1",
     "gulp-autoprefixer": "8.0.0",
